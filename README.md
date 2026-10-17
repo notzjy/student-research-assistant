@@ -18,7 +18,7 @@
 
 ## 已实现的功能
 
-- **消息接入与分类：** QQ邮箱只读IMAP、直接粘贴、完整JSON导入；按研究、学生生活、求职和其他分类，支持多标签、搜索分页、去重与版本化人工纠正。
+- **消息接入与分类：** QQ邮箱只读IMAP（新信优先，历史继续补齐）、直接粘贴、完整JSON导入；按研究、学生生活、求职和其他分类，支持多标签、搜索分页、去重与版本化人工纠正。
 - **重点联系人：** 按来源、账号与发送者标识配置角色；独立重点收件箱、新消息到达提醒与显式已读，不凭昵称猜测身份。
 - **时间与提醒：** 提取截止时间、活动时段与地点；按原消息时间解释相对日期，日期不补钟点；持久提醒队列支持重启恢复、有限重试、修改重排，以及已完成和已取消状态。
 - **研究资料RAG：** txt、Markdown、含文本PDF解析和分块，本地BGE中文Embedding＋Qdrant向量检索，DeepSeek带出处回答；支持正文分类、证据引用、原件下载和人工纠正。
@@ -84,11 +84,11 @@ Copy-Item .env.example .env
 
 | 验证范围 | 结果与证据 |
 |---|---|
-| 自动化回归 | 本机与[GitHub Actions](https://github.com/notzjy/student-research-assistant/actions/runs/39022303737)均确认337项通过：根测试264＋保留教学脚本73 |
+| 自动化回归 | 本机与[GitHub Actions](https://github.com/notzjy/student-research-assistant/actions/runs/39026274490)均确认350项通过：根测试277＋保留教学脚本73，依赖检查通过 |
 | 实际本机联调 | 29项通过：真实DeepSeek、BGE512、Qdrant、HTTP、Streamlit、Edge、一键启动器与重启持久性；业务样本为合成数据，见[报告](docs/results/final_delivery.json) |
-| QQ邮箱 | 已实际读取正文，重新连接后无新信不重复导入；真实附件、新信增量和到达至通知延迟仍待验，见[只读检查](docs/results/qq_delivery_check.json) |
+| QQ邮箱 | 已实际读取正文和真实PDF，完成正文分类、检索问答、指定UID恢复、去重与重启验收，见[附件验收](docs/results/qq_attachment_acceptance.json)；真正新信到通知延迟仍待验 |
 | Android | APK实际构建、对齐、签名与哈希核对通过；尚未真机安装、授权或验收微信/QQ/BOSS通知，见[构建记录](android-notification-bridge/dist/build_result.json) |
-| Docker | 已提供Dockerfile与Compose；本机无Docker CLI，尚未构建镜像或运行容器 |
+| Docker | GitHub Linux运行器已实际构建镜像、启动Compose后端与界面并验证重启持久性；本机Windows仍无Docker CLI |
 
 通知桥仅取得应用实际展示的通知内容，不保证完整聊天、原消息时刻、稳定真实联系人ID或附件原件。手机与电脑默认在同一可互通网络使用；跨网HTTPS接收端尚未部署。模型推断和引用出处校验不保证语义永远正确，保留人工纠正入口。
 
@@ -102,7 +102,7 @@ Copy-Item .env.example .env
 .\.venv\Scripts\python.exe -m pip check
 ```
 
-根目录GitHub Actions工作流执行离线回归，不需要模型密钥或QQ授权码。首次Windows远端运行已实际确认337项测试与依赖检查通过；后续提交以对应运行结果为准。
+根目录GitHub Actions工作流执行离线回归，不需要模型密钥或QQ授权码。首次Windows远端运行已确认337项通过；最新350项回归及实际容器验收见[收尾报告](docs/results/closeout_status.json)和对应Actions记录。
 
 ## 代码导航
 

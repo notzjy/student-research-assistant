@@ -52,5 +52,6 @@
   "arrival_to_notification_latency_verified": false,
   "private_documents_published": false,
   "private_data_location": "local ignored directory",
-  "production_cursor_modified_by_acceptance": false
+  "production_cursor_modified_by_acceptance": false,
+  "original_mail_date_and_namespace_compared": true
 }

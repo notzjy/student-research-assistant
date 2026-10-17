@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# 同一镜像分别启动API和界面；本文件尚未经本机Docker构建验证。
+# 同一镜像分别启动API和界面；GitHub Linux运行器已完成实际构建与Compose验收。
 FROM python:3.13-slim
 
 ENV PYTHONUNBUFFERED=1 \

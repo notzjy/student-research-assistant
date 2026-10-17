@@ -2,7 +2,11 @@
 
 更新：2026-10-17。
 
-## 当前状态
+## 收尾增量发布（2026-10-17）
+
+当前代码已补邮件积压下的新信优先处理；[最新Actions](https://github.com/notzjy/student-research-assistant/actions/runs/39026274490)实际通过350项Windows回归，以及Docker镜像构建、Compose双服务、APK下载和重启持久性验收。真实QQ附件与最近新信通道的检查结果见[收尾报告](results/closeout_status.json)。以下317文件/337项是初次发布节点。
+
+## 初次发布状态
 
 本地源码、公开版首页、架构图、使用说明、验收证据、离线回归工作流和简历项目介绍已整理。Git版本记录使用GitHub账号`notzjy`及GitHub noreply邮箱，不把私人联系邮箱写入新提交作者信息。
 

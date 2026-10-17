@@ -1,4 +1,4 @@
-# 本机暂无Docker CLI，以下配置已交付但镜像构建与容器运行尚待验证。
+# GitHub Linux运行器已实际构建并启动双服务；Windows本机仍未安装Docker CLI。
 name: student-assistant
 
 services:

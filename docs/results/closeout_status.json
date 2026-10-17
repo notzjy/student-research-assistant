@@ -1,0 +1,62 @@
+{
+  "updated_at": "2026-10-17T18:51:48.160765+08:00",
+  "status": "external_device_steps_pending",
+  "project_percent": 84,
+  "stage_scores": [
+    10,
+    10,
+    20,
+    15,
+    20,
+    0,
+    9
+  ],
+  "learning_points": 400,
+  "teaching": "paused",
+  "local_regression": {
+    "root": 277,
+    "lessons": 73,
+    "total": 350,
+    "status": "passed"
+  },
+  "real_qq_attachment": {
+    "report": "qq_attachment_acceptance.json",
+    "checks_passed": 9,
+    "private_pdf_published": false
+  },
+  "real_recent_mail_priority": {
+    "report": "mail_recent_priority_live.json",
+    "checks_passed": 4,
+    "backfill_preserved": true,
+    "new_regression_tests": 13
+  },
+  "github_actions": {
+    "run_id": 39026274490,
+    "url": "https://github.com/notzjy/student-research-assistant/actions/runs/39026274490",
+    "code_commit": "3807f43aa2abb1396de09d1ebcccb6185dbd483c",
+    "container_job_id": 117377771615,
+    "container_job_status": "success",
+    "container_checks_passed": 5,
+    "windows_tests_status": "success",
+    "windows_job_id": 117377771721,
+    "windows_test_counts": {
+      "root": 277,
+      "lessons": 73,
+      "total": 350
+    },
+    "pip_check": "passed",
+    "overall_status": "success"
+  },
+  "pending": [
+    "restart local launcher to load recent-mail fix",
+    "Android install/pair/notification-access and real-device notifications",
+    "actual new self-forwarded email and arrival-to-channel latency"
+  ],
+  "auto_restart": {
+    "executed": false,
+    "review_result": "blocked by policy",
+    "more_specific_reason_provided": false
+  },
+  "original_resume_pdf_modified": false,
+  "old_reports_are_historical": true
+}
