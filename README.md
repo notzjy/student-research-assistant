@@ -1,12 +1,14 @@
 # 个人研究与日程智能助理
 
+[![Tests](https://github.com/notzjy/student-research-assistant/actions/workflows/tests.yml/badge.svg)](https://github.com/notzjy/student-research-assistant/actions/workflows/tests.yml)
+
 基于 [agent-service-toolkit](https://github.com/JoshuaC215/agent-service-toolkit) 扩展的个人 Agent 应用：把重要消息、研究资料和待办提醒集中到一个本地平台，保留原文、出处与人工纠正记录。
 
 **技术栈：** Python · LangGraph · LangChain · DeepSeek · FastAPI · Pydantic · SQLite · BGE Embedding · Qdrant · Streamlit · Android Java
 
 [运行说明](docs/DELIVERY.md) · [简历项目介绍](docs/RESUME_PROJECT.md) · [验收报告](docs/results/final_delivery.json) · [安卓无线接入](docs/CHANNEL_INTEGRATION.md) · [上游声明](THIRD_PARTY_NOTICES.md)
 
-当前源码已完成本地公开整理；GitHub远端发布状态见[发布记录](docs/PUBLICATION.md)。
+项目仓库：[https://github.com/notzjy/student-research-assistant](https://github.com/notzjy/student-research-assistant)。可将此链接用于简历；上传与校验详情见[发布记录](docs/PUBLICATION.md)。
 
 ![本机实际运行界面，使用合成验收数据](docs/results/final_dashboard.png)
 
@@ -53,6 +55,9 @@ flowchart LR
 主要验收环境为 **Windows＋Python 3.13**，后端默认端口8002，界面默认8501。此入口启动的是`student`服务配置，不要求运行上游全量demo。
 
 ```powershell
+git clone https://github.com/notzjy/student-research-assistant.git
+cd student-research-assistant
+
 # 在仓库根目录创建环境并安装锁定依赖
 py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock.txt
@@ -79,7 +84,7 @@ Copy-Item .env.example .env
 
 | 验证范围 | 结果与证据 |
 |---|---|
-| 自动化回归 | 337项通过：根测试264＋保留教学脚本73 |
+| 自动化回归 | 本机与[GitHub Actions](https://github.com/notzjy/student-research-assistant/actions/runs/39022303737)均确认337项通过：根测试264＋保留教学脚本73 |
 | 实际本机联调 | 29项通过：真实DeepSeek、BGE512、Qdrant、HTTP、Streamlit、Edge、一键启动器与重启持久性；业务样本为合成数据，见[报告](docs/results/final_delivery.json) |
 | QQ邮箱 | 已实际读取正文，重新连接后无新信不重复导入；真实附件、新信增量和到达至通知延迟仍待验，见[只读检查](docs/results/qq_delivery_check.json) |
 | Android | APK实际构建、对齐、签名与哈希核对通过；尚未真机安装、授权或验收微信/QQ/BOSS通知，见[构建记录](android-notification-bridge/dist/build_result.json) |
@@ -97,7 +102,7 @@ Copy-Item .env.example .env
 .\.venv\Scripts\python.exe -m pip check
 ```
 
-根目录GitHub Actions工作流执行离线回归，不需要模型密钥或QQ授权码。工作流是否在远端成功，以GitHub实际运行结果为准。
+根目录GitHub Actions工作流执行离线回归，不需要模型密钥或QQ授权码。首次Windows远端运行已实际确认337项测试与依赖检查通过；后续提交以对应运行结果为准。
 
 ## 代码导航
 

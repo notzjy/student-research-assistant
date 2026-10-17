@@ -1,0 +1,44 @@
+{
+  "published_at": "2026-10-17T17:48:32.293583+08:00",
+  "repository": "https://github.com/notzjy/student-research-assistant",
+  "visibility": "public",
+  "branch": "main",
+  "source_commit": "18c2ca6f0e4f53c6f34309df65f6eb6d2b64cadc",
+  "source_files": 317,
+  "source_tree_sha": "a22d201021a0ad4974b1cb11ca8af9179d5bcd4e",
+  "reviewed_local_tree_matches": true,
+  "all_seven_binary_blobs_match": true,
+  "private_local_values_detected": 0,
+  "private_runtime_files_in_source": false,
+  "original_resume_modified": false,
+  "resume_overview": "docs/RESUME_PROJECT.md",
+  "model_integration_evidence": "docs/results/final_delivery.json",
+  "local_regression_tests": {
+    "root": 264,
+    "lessons": 73,
+    "total": 337,
+    "status": "passed"
+  },
+  "github_actions": {
+    "run_id": 39022303737,
+    "url": "https://github.com/notzjy/student-research-assistant/actions/runs/39022303737",
+    "status": "completed",
+    "conclusion": "success",
+    "job_id": 117366376693,
+    "tests": {
+      "root": 264,
+      "lessons": 73,
+      "total": 337
+    },
+    "root_test_seconds": 141.009,
+    "lesson_test_seconds": 3.164,
+    "pip_check": "passed"
+  },
+  "boundaries": {
+    "android_device_verified": false,
+    "qq_real_attachment_verified": false,
+    "arrival_to_notification_latency_verified": false,
+    "docker_run_verified": false,
+    "learning_score_unchanged": true
+  }
+}
