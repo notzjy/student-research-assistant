@@ -43,15 +43,29 @@ class MailRuntime:
             try:
                 if retry_failed:
                     await asyncio.to_thread(self.store.retry_failed, self.settings.account)
+                recent = {'received': 0, 'priority_job_ids': []}
+                fetch_recent = getattr(self.collector, 'fetch_recent', None)
+                if callable(fetch_recent):
+                    try:
+                        with span('mail.collect_recent'):
+                            recent = await asyncio.to_thread(fetch_recent, self.store)
+                    except Exception as error:
+                        # 最近新信的短连接失败不阻止普通补收，也不清空已有待处理队列。
+                        result['recent_collection_error'] = getattr(error, 'error_code', type(error).__name__)
                 try:
                     with span("mail.collect"):
                         fetched = await asyncio.to_thread(self.collector.fetch_new, self.store)
+                    # 正常增量新到的邮件也要优先于已落库的业务积压；内部ID不返回给状态接口。
+                    normal_priority = fetched.pop('received_job_ids', [])
                     result.update(fetched)
                 except Exception as error:
                     # 已落盘的邮件不依赖本轮联网成功；断网时也继续清理本地待处理队列。
                     result["collection_error"] = getattr(error, "error_code", type(error).__name__)
+                    normal_priority = []
+                result['received'] += recent['received']
                 jobs = await asyncio.to_thread(
-                    self.store.pending_jobs, self.settings.account, self.settings.batch_size
+                    self.store.pending_jobs, self.settings.account, self.settings.batch_size,
+                    priority_job_ids=(recent['priority_job_ids'] + normal_priority)[:100],
                 )
                 for job in jobs:
                     if stop_event is not None and stop_event.is_set():
@@ -67,7 +81,7 @@ class MailRuntime:
                         result["failed"] += 1
                     else:
                         result["processed"] += 1
-                self.last_error = result.get("collection_error") or result.get("error_code")
+                self.last_error = result.get("collection_error") or result.get("recent_collection_error") or result.get("error_code")
                 self.last_result = result
                 return result
             except Exception as error:

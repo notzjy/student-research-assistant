@@ -1,0 +1,56 @@
+{
+  "verified_at": "2026-10-17T18:37:21.862623+08:00",
+  "mode": "real QQ selected UID recovery through formal MailRuntime; separate local database; no forged mail or altered Date",
+  "checks": [
+    {
+      "name": "real_imap_incremental_selected_uid_recovery",
+      "passed": true
+    },
+    {
+      "name": "message_original_source_and_time_preserved",
+      "passed": true
+    },
+    {
+      "name": "real_pdf_original_download_hash_matches_user_file",
+      "passed": true,
+      "bytes": 297071
+    },
+    {
+      "name": "real_pdf_text_and_bge_qdrant_index",
+      "passed": true,
+      "pages": 1,
+      "chunks": 5
+    },
+    {
+      "name": "deepseek_document_body_classification",
+      "passed": true,
+      "category": "求职",
+      "evidence_count": 4
+    },
+    {
+      "name": "real_semantic_retrieval",
+      "passed": true,
+      "hits": 5
+    },
+    {
+      "name": "deepseek_answer_with_actual_pdf_citations",
+      "passed": true,
+      "citation_count": 2
+    },
+    {
+      "name": "same_uid_replay_no_duplicate",
+      "passed": true
+    },
+    {
+      "name": "service_lifecycle_restart_preserves_pdf_and_classification",
+      "passed": true
+    }
+  ],
+  "status": "passed",
+  "elapsed_seconds": 8.137,
+  "new_arrival_incremental_verified": false,
+  "arrival_to_notification_latency_verified": false,
+  "private_documents_published": false,
+  "private_data_location": "local ignored directory",
+  "production_cursor_modified_by_acceptance": false
+}

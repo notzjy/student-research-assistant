@@ -293,11 +293,77 @@ class ImapCollector:
             return literal
         raise ValueError("没有收到指定 UID 的完整邮件正文")
 
+    def fetch_recent(self, store) -> dict:
+        """积压时先保存最新一批新信，不越过历史游标；首次接入仍遵守initial_limit。"""
+        result = {'received': 0, 'priority_job_ids': []}
+        if not self.settings.configured:
+            raise MailCollectionError('MailConfigurationMissing')
+        connection = None
+        deadline = time.monotonic() + 15
+        with self._lock:
+            try:
+                connection = self.connection_factory(self.settings.host, self.settings.port, ssl_context=ssl.create_default_context(), timeout=min(self.settings.timeout, 15))
+                status, _ = self._command(connection, deadline, 'login', self.settings.account, self.settings.auth_code)
+                if status != 'OK':
+                    raise ValueError('IMAP登录未成功')
+                status, _ = self._command(connection, deadline, 'select', 'INBOX', readonly=True)
+                if status != 'OK':
+                    raise ValueError('IMAP只读选择未成功')
+                _, validity = self._command(connection, deadline, 'response', 'UIDVALIDITY')
+                if not validity or not isinstance(validity[0], bytes) or not validity[0].strip().isdigit():
+                    raise ValueError('无效UIDVALIDITY')
+                uidvalidity = str(int(validity[0]))
+                if not 1 <= int(uidvalidity) <= 4_294_967_295:
+                    raise ValueError('UIDVALIDITY超出范围')
+                account = self.settings.account
+                cursor = store.get_cursor(account, 'INBOX', uidvalidity)
+                if cursor is None or cursor >= 4_294_967_295:
+                    return result
+                status, data = self._command(connection, deadline, 'uid', 'SEARCH', None, 'UID', f'{cursor + 1}:*')
+                if status != 'OK':
+                    raise ValueError('UID搜索失败')
+                uids = sorted({int(value) for chunk in data or [] if isinstance(chunk, bytes) for value in chunk.split()})
+                if any(not 1 <= uid <= 4_294_967_295 for uid in uids):
+                    raise ValueError('无效UID')
+                # 排除普通收取本轮即将处理的一批；没有积压时不重复下载同一封信。
+                remaining = [uid for uid in uids if uid > cursor][self.settings.batch_size:]
+                for uid in remaining[-self.settings.batch_size:]:
+                    existing = store.get_job(account, 'INBOX', uidvalidity, uid)
+                    if existing and existing['has_raw']:
+                        if existing['status'] in ('pending', 'retry'):
+                            result['priority_job_ids'].append(existing['job_id'])
+                        continue
+                    status, data = self._command(connection, deadline, 'uid', 'FETCH', str(uid), '(UID RFC822.SIZE INTERNALDATE)')
+                    metadata = self._metadata(data, uid) if status == 'OK' else None
+                    if metadata is None or metadata['rfc822_size'] > self.settings.max_message_bytes:
+                        continue
+                    status, data = self._command(connection, deadline, 'uid', 'FETCH', str(uid), '(UID BODY.PEEK[])')
+                    if status != 'OK':
+                        raise ValueError('邮件正文收取失败')
+                    raw = self._raw(data, uid)
+                    if len(raw) > self.settings.max_message_bytes:
+                        continue
+                    saved = store.save_raw(account, 'INBOX', uidvalidity, uid, raw, metadata, advance_cursor=False)
+                    result['received'] += 1
+                    result['priority_job_ids'].append(saved['job_id'])
+                return result
+            except Exception as error:
+                raise MailCollectionError(type(error).__name__) from None
+            finally:
+                if connection is not None:
+                    try:
+                        socket = getattr(connection, 'sock', None)
+                        if socket is not None:
+                            socket.settimeout(min(self.settings.timeout, 1))
+                        connection.logout()
+                    except Exception:
+                        pass
+
     def fetch_new(self, store) -> dict:
         """收取首轮最近邮件或游标后的新 UID，原文落库后推进，单封获取失败不越过该 UID。"""
         if not self.settings.configured:
             raise MailCollectionError("MailConfigurationMissing")
-        result = {"received": 0, "skipped": 0, "initialized": False, "uidvalidity_reset": False}
+        result = {"received": 0, "skipped": 0, "initialized": False, "uidvalidity_reset": False, "received_job_ids": []}
         connection = None
         deadline = time.monotonic() + 40
         with self._lock:
@@ -368,7 +434,8 @@ class ImapCollector:
                             store.record_skipped(account, mailbox, uidvalidity, uid, "MessageTooLarge", metadata)
                             result["skipped"] += 1
                             continue
-                        store.save_raw(account, mailbox, uidvalidity, uid, raw, metadata)
+                        saved = store.save_raw(account, mailbox, uidvalidity, uid, raw, metadata)
+                        result['received_job_ids'].append(saved['job_id'])
                         result["received"] += 1
                     except Exception as error:
                         # 本轮已保存的邮件仍可处理；失败 UID 没有推进，下轮短连接会重新取得。

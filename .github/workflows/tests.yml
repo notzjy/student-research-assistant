@@ -31,3 +31,21 @@ jobs:
         run: python -m unittest discover -s tests -q
       - name: Run preserved lesson tests
         run: python -m unittest discover -s lessons -q
+
+  container-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare empty local configuration
+        run: cp .env.example .env
+      - name: Build and start backend and UI
+        run: docker compose up --build --detach --wait --wait-timeout 180
+      - name: Verify service, UI, APK and restart persistence
+        run: python3 .github/scripts/container_smoke.py
+      - name: Show container diagnostics
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Remove this runner's temporary containers and volume
+        if: always()
+        run: docker compose down --volumes

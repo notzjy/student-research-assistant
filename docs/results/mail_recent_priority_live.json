@@ -1,0 +1,27 @@
+{
+  "verified_at": "2026-10-17T18:44:47.875242+08:00",
+  "mode": "real QQ IMAP readonly, isolated local queue, metadata-only report",
+  "checks": [
+    {
+      "name": "real_latest_mail_saved_without_skipping_backfill",
+      "passed": true
+    },
+    {
+      "name": "real_recent_mail_scheduled_before_old_mail",
+      "passed": true
+    },
+    {
+      "name": "historical_mail_remains_queued_for_backfill",
+      "passed": true
+    },
+    {
+      "name": "reconnect_recent_mail_not_downloaded_twice",
+      "passed": true
+    }
+  ],
+  "status": "passed",
+  "production_cursor_modified": false,
+  "original_message_date_modified": false,
+  "private_mail_content_published": false,
+  "new_mail_sent_by_assistant": false
+}

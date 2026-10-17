@@ -142,9 +142,20 @@ class MailStore:
         with self._lock, self._connection(write=True) as connection:
             self._advance(connection, identity, last_uid, self._timestamp(self._now()))
 
-    def save_raw(self, account, mailbox, uidvalidity, uid, raw: bytes, metadata=None) -> dict:
-        """原子保存完整 EML、队列记录和游标；相同 UID 原件变更时拒绝覆盖。"""
+    def get_job(self, account, mailbox, uidvalidity, uid) -> dict | None:
+        """读取指定UID的已有任务，用于最近新信去重，不下载原件也不推进历史游标。"""
         identity = self._identity(account, mailbox, uidvalidity, uid)
+        with self._lock, self._connection() as connection:
+            row = connection.execute(
+                'SELECT * FROM mail_jobs WHERE account_id=? AND mailbox=? AND uidvalidity=? AND uid=?', identity,
+            ).fetchone()
+            return self._detail(row) if row is not None else None
+
+    def save_raw(self, account, mailbox, uidvalidity, uid, raw: bytes, metadata=None, *, advance_cursor=True) -> dict:
+        """原子保存EML与队列；最近新信可不推进补历史游标，同UID原件变更仍拒绝覆盖。"""
+        identity = self._identity(account, mailbox, uidvalidity, uid)
+        if not isinstance(advance_cursor, bool):
+            raise ValueError('advance_cursor必须是布尔值')
         if not isinstance(raw, bytes):
             raise ValueError("原始邮件必须是 bytes")
         if metadata is not None and not isinstance(metadata, dict):
@@ -187,7 +198,9 @@ class MailStore:
                                error_code=NULL,attempts=0,next_attempt_at=NULL,updated_at=? WHERE job_id=?""",
                             (fingerprint, metadata_json, timestamp, job_id),
                         )
-                    self._advance(connection, identity[:3], uid, timestamp)
+                    # 优先保存新信时不能越过尚未补齐的历史UID，普通顺序收取仍推进游标。
+                    if advance_cursor:
+                        self._advance(connection, identity[:3], uid, timestamp)
                     result = self._detail(connection.execute("SELECT * FROM mail_jobs WHERE job_id=?", (job_id,)).fetchone())
                 return result
             except Exception:
@@ -228,16 +241,20 @@ class MailStore:
                 raise OSError("邮件原件未通过指纹校验")
             return raw
 
-    def pending_jobs(self, account, limit: int = 10, now=None) -> list[dict]:
-        """返回待处理和已到退避时刻的单信任务，失败邮件与新的收取游标相互独立。"""
+    def pending_jobs(self, account, limit: int = 10, now=None, *, priority_job_ids=()) -> list[dict]:
+        """先返回本轮最近新信，再按原顺序补历史；优先级不绕过失败退避或账号隔离。"""
         if not isinstance(limit, int) or isinstance(limit, bool) or limit < 1:
             raise ValueError("limit 必须是正整数")
+        if not isinstance(priority_job_ids, (list, tuple)) or len(priority_job_ids) > 100 or any(not isinstance(value, str) for value in priority_job_ids):
+            raise ValueError('优先任务列表不合法')
         timestamp = self._timestamp(self._now(now))
+        priority = list(dict.fromkeys(priority_job_ids))
+        order = ('CASE WHEN job_id IN (' + ','.join('?' for _ in priority) + ') THEN 0 ELSE 1 END, ') if priority else ''
         with self._lock, self._connection() as connection:
             rows = connection.execute(
                 """SELECT * FROM mail_jobs WHERE account_id=? AND
-                   (status='pending' OR (status='retry' AND next_attempt_at<=?)) ORDER BY rowid LIMIT ?""",
-                (account, timestamp, limit),
+                   (status='pending' OR (status='retry' AND next_attempt_at<=?)) ORDER BY """ + order + 'rowid LIMIT ?',
+                (account, timestamp, *priority, limit),
             ).fetchall()
             return [self._detail(row) for row in rows]
 

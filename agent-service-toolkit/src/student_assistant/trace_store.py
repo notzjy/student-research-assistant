@@ -30,7 +30,7 @@ ALLOWED_SPAN_NAMES = frozenset({
     "message.resolve_times", "message.persist", "document.receive", "document.extract",
     "document.chunk", "document.embed", "document.index", "document.search", "document.answer",
     "document.validate_citations", "reminder.plan", "reminder.deliver",
-    "mail.collect", "mail.parse", "mail.process",
+    "mail.collect", "mail.collect_recent", "mail.parse", "mail.process",
     'document.classify',
 })
 _IDENTIFIER = re.compile(r"[0-9a-f]{32}")
