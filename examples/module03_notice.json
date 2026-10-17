@@ -1,0 +1,13 @@
+{
+  "source": "manual",
+  "account_id": "demo",
+  "source_message_id": "module03-files-001",
+  "sender_id": "demo-teacher-001",
+  "sender_name": "示例老师",
+  "sent_at": "2026-10-16T10:00:00+08:00",
+  "text": "发来两份教学材料供查阅，附件分别是星河计划检索实验方案和学生日常办事指南。本消息没有新增待办。",
+  "attachments": [
+    {"filename": "module03_research_note.md", "availability": "mentioned"},
+    {"filename": "module03_student_life.md", "availability": "mentioned"}
+  ]
+}

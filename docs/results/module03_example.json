@@ -1,0 +1,721 @@
+{
+  "verified_at": "2026-10-16T15:05:14.937878+08:00",
+  "mode": "real CPU BGE512 + disk Qdrant + DeepSeek + CLI/TCP; synthetic documents; temporary stores",
+  "embedding_hf_offline_after_cached_download": true,
+  "checks": [
+    {
+      "name": "import_file_source_message",
+      "transport": "real CLI/TCP",
+      "response": {
+        "status": "processed",
+        "message": {
+          "message_id": "f992ddd69f3f075dfbd1d937",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "module03_research_note.md",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "module03_student_life.md",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module03-files-001",
+            "text": "发来两份教学材料供查阅，附件分别是星河计划检索实验方案和学生日常办事指南。本消息没有新增待办。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "星河计划检索实验方案和学生日常办事指南",
+            "category": "研究",
+            "events": [],
+            "summary": "示例老师发来两份教学材料供查阅，附件分别是星河计划检索实验方案和学生日常办事指南；消息明确没有新增待办。"
+          },
+          "events": [],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "module03_research_note.md",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "module03_student_life.md",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": null,
+          "priority": "normal"
+        }
+      }
+    },
+    {
+      "name": "index_research_file",
+      "transport": "real CLI/TCP",
+      "response": {
+        "status": "indexed",
+        "document": {
+          "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+          "filename": "module03_research_note.md",
+          "sha256": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+          "status": "indexed",
+          "error_code": null,
+          "page_count": 1,
+          "chunk_count": 3,
+          "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+          "sources": [
+            {
+              "message_id": "f992ddd69f3f075dfbd1d937",
+              "attachment_index": 0,
+              "source": "manual",
+              "account_id": "demo",
+              "source_message_id": "module03-files-001",
+              "sender_id": "demo-teacher-001",
+              "sender_name": "示例老师",
+              "sent_at": "2026-10-16T10:00:00+08:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "index_student_life_distractor",
+      "transport": "real CLI/TCP",
+      "response": {
+        "status": "indexed",
+        "document": {
+          "document_id": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+          "filename": "module03_student_life.md",
+          "sha256": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+          "status": "indexed",
+          "error_code": null,
+          "page_count": 1,
+          "chunk_count": 2,
+          "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+          "sources": [
+            {
+              "message_id": "f992ddd69f3f075dfbd1d937",
+              "attachment_index": 1,
+              "source": "manual",
+              "account_id": "demo",
+              "source_message_id": "module03-files-001",
+              "sender_id": "demo-teacher-001",
+              "sender_name": "示例老师",
+              "sent_at": "2026-10-16T10:00:00+08:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "semantic_paraphrase_search",
+      "transport": "real CLI/TCP",
+      "response": {
+        "query": "研究实验对检索覆盖率设定了什么最低要求？",
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "hits": [
+          {
+            "chunk_id": "8edaf9f8-2940-5439-aaf3-e4c14e485eab",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 320,
+            "end": 720,
+            "text": "中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，120条保留给最终验收。保留集不能被用于反复调整检索阈值。对每个问题记录可支持回答的原文证据，允许标注资料中没有答案的问题。模型回答流畅不代表检索正确，检索排名靠前也不代表该片段足以支持答案。评估时分别检查召回、回答是否得到原文支持以及引用位置是否正确。\n\n## 文档处理\n\n文档按页提取正文，每个片段保留文档标识、页码与字符偏移。当前教学实现采用400字符的窗口和80字符的重叠；它是一种便于观察的滑窗实现，后续可以比较按段落或token切分的效果。保留重叠是为了降低一句话横跨边界时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失",
+            "score": 0.5345465685699298,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          },
+          {
+            "chunk_id": "0fd37588-8215-5b35-8de1-2a0da2533073",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 0,
+            "end": 400,
+            "text": "# 星河计划检索实验方案\n\n这是本项目原创的合成教学材料，用于测试文档解析、分块、向量检索和带引用回答，不是一篇真实发表的论文。\n\n## 研究目标\n\n星河计划研究个人通知与研究资料如何共同支持学生的日常工作。系统需要保存消息来源、原文及原始发送时间，区分人工上传的文件、仅收到文件名的线索和已经提取正文的文件。聊天会话使用独立的会话编号，业务事项使用可追溯的来源消息编号。研究阶段先验证可重现的小规模实验，再考虑接入更多真实渠道。\n\n## 检索验收指标\n\n检索验收要求：Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。Recall@5表示前五个检索结果中是否包含问题对应的证据片段。验收时需要同时记录查询、目标文档、实际命中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，12",
+            "score": 0.5319519763538214,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          },
+          {
+            "chunk_id": "33081630-7be6-5db7-a270-1307fb4674b4",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 640,
+            "end": 806,
+            "text": "时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失败案例和已知限制。对没有相关证据的问题，系统应说明当前资料不足，不能编造不存在的页码、实验结果或人员身份。扫描版PDF需要额外OCR流程；本轮实验只使用可提取文本的文件。\n",
+            "score": 0.49500564940923436,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "grounded_answer",
+      "transport": "real CLI/TCP",
+      "response": {
+        "question": "检索验收要求Recall@5至少达到多少？",
+        "status": "answered",
+        "answer": "检索验收要求Recall@5不得低于0.85。",
+        "citations": [
+          {
+            "chunk_id": "0fd37588-8215-5b35-8de1-2a0da2533073",
+            "quote": "检索验收要求：Recall@5不得低于0.85",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 228,
+            "end": 251,
+            "score": 0.5982733577436945,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          }
+        ],
+        "reason": null,
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "retrieved_count": 5
+      }
+    },
+    {
+      "name": "unsupported_question_is_unknown",
+      "transport": "real CLI/TCP",
+      "response": {
+        "question": "项目负责人的银行卡密码是多少？",
+        "status": "unknown",
+        "answer": "现有检索片段不足以给出带有可核对出处的回答。",
+        "citations": [],
+        "reason": "insufficient_evidence",
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "retrieved_count": 4
+      }
+    },
+    {
+      "name": "main_agent_calls_document_search",
+      "transport": "real CLI/TCP",
+      "response": {
+        "thread_id": "module03-tools",
+        "turn_id": "dae905bb-d5d4-48e8-bf00-b2c5ddaa7daa",
+        "reply": "已找到，来源为文件 **module03_research_note.md**（第1页，\"检索验收指标\"一节），原文写明：\n\n- **Recall@5 不得低于 0.85**\n- 同时要求平均查询耗时不得高于 120 毫秒\n- 定义：前五个检索结果中包含问题对应的证据片段\n- 文档特别说明：这是本教学实验的设定，不是通用行业标准\n\n未新增任何待办。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "search_documents",
+          "search_documents"
+        ],
+        "tool_results": [
+          {
+            "status": "retrieved",
+            "query": "星河计划实验方案 Recall@5 最低要求",
+            "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+            "hits": [
+              {
+                "chunk_id": "0fd37588-8215-5b35-8de1-2a0da2533073",
+                "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+                "filename": "module03_research_note.md",
+                "page": 1,
+                "start": 0,
+                "end": 400,
+                "text": "# 星河计划检索实验方案\n\n这是本项目原创的合成教学材料，用于测试文档解析、分块、向量检索和带引用回答，不是一篇真实发表的论文。\n\n## 研究目标\n\n星河计划研究个人通知与研究资料如何共同支持学生的日常工作。系统需要保存消息来源、原文及原始发送时间，区分人工上传的文件、仅收到文件名的线索和已经提取正文的文件。聊天会话使用独立的会话编号，业务事项使用可追溯的来源消息编号。研究阶段先验证可重现的小规模实验，再考虑接入更多真实渠道。\n\n## 检索验收指标\n\n检索验收要求：Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。Recall@5表示前五个检索结果中是否包含问题对应的证据片段。验收时需要同时记录查询、目标文档、实际命中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，12",
+                "score": 0.6772319007907044,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 0,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              },
+              {
+                "chunk_id": "605e65d0-eda3-5fe0-828d-b70a396afa02",
+                "document_id": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+                "filename": "module03_student_life.md",
+                "page": 1,
+                "start": 0,
+                "end": 400,
+                "text": "# 学生日常办事指南\n\n这是用于检索对照的合成教学材料，介绍宿舍报修、校园卡和学生生活事项，与星河计划检索实验的指标无关。\n\n## 宿舍报修\n\n学生发现宿舍水龙头漏水时，应在报修表填写楼栋、房间号、故障描述和联系电话。填写之后由值班人员登记，等待维修安排。报修材料里不要填写银行卡密码或与维修无关的个人资料。紧急断电问题应先向现场管理人员报告，再补充登记信息。\n\n## 校园卡\n\n校园卡丢失后可以先办理挂失，随后按学校实际服务要求申请补办。办事记录需要标明当前状态，避免已提交的申请被重复建立。这里没有提供任何真实学校的办理时限、收费标准或窗口地址，具体信息需要查询学校发布的正式通知。\n\n## 活动登记\n\n社团活动消息应保留原通知中的时间、地点和联系方法。只写日期的通知不能被默认成零点开始。若活动只有报名截止日而没有具体钟点，可以显示日期标签并保留待确认信息。原消息的发送时间与智能体处理时间可能",
+                "score": 0.466348595741518,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 1,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              },
+              {
+                "chunk_id": "8edaf9f8-2940-5439-aaf3-e4c14e485eab",
+                "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+                "filename": "module03_research_note.md",
+                "page": 1,
+                "start": 320,
+                "end": 720,
+                "text": "中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，120条保留给最终验收。保留集不能被用于反复调整检索阈值。对每个问题记录可支持回答的原文证据，允许标注资料中没有答案的问题。模型回答流畅不代表检索正确，检索排名靠前也不代表该片段足以支持答案。评估时分别检查召回、回答是否得到原文支持以及引用位置是否正确。\n\n## 文档处理\n\n文档按页提取正文，每个片段保留文档标识、页码与字符偏移。当前教学实现采用400字符的窗口和80字符的重叠；它是一种便于观察的滑窗实现，后续可以比较按段落或token切分的效果。保留重叠是为了降低一句话横跨边界时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失",
+                "score": 0.4429500622753273,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 0,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              },
+              {
+                "chunk_id": "33081630-7be6-5db7-a270-1307fb4674b4",
+                "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+                "filename": "module03_research_note.md",
+                "page": 1,
+                "start": 640,
+                "end": 806,
+                "text": "时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失败案例和已知限制。对没有相关证据的问题，系统应说明当前资料不足，不能编造不存在的页码、实验结果或人员身份。扫描版PDF需要额外OCR流程；本轮实验只使用可提取文本的文件。\n",
+                "score": 0.4000485445278619,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 0,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              },
+              {
+                "chunk_id": "9d9a8ae9-f6db-5bdc-8e8a-c356d2fe589e",
+                "document_id": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+                "filename": "module03_student_life.md",
+                "page": 1,
+                "start": 320,
+                "end": 424,
+                "text": "、地点和联系方法。只写日期的通知不能被默认成零点开始。若活动只有报名截止日而没有具体钟点，可以显示日期标签并保留待确认信息。原消息的发送时间与智能体处理时间可能不同，理解相对日期时需要使用原消息的发送时间。\n",
+                "score": 0.3570372356516055,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 1,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "status": "retrieved",
+            "query": "Recall@5 指标 阈值 要求",
+            "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+            "hits": [
+              {
+                "chunk_id": "0fd37588-8215-5b35-8de1-2a0da2533073",
+                "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+                "filename": "module03_research_note.md",
+                "page": 1,
+                "start": 0,
+                "end": 400,
+                "text": "# 星河计划检索实验方案\n\n这是本项目原创的合成教学材料，用于测试文档解析、分块、向量检索和带引用回答，不是一篇真实发表的论文。\n\n## 研究目标\n\n星河计划研究个人通知与研究资料如何共同支持学生的日常工作。系统需要保存消息来源、原文及原始发送时间，区分人工上传的文件、仅收到文件名的线索和已经提取正文的文件。聊天会话使用独立的会话编号，业务事项使用可追溯的来源消息编号。研究阶段先验证可重现的小规模实验，再考虑接入更多真实渠道。\n\n## 检索验收指标\n\n检索验收要求：Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。Recall@5表示前五个检索结果中是否包含问题对应的证据片段。验收时需要同时记录查询、目标文档、实际命中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，12",
+                "score": 0.5147633112515253,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 0,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              },
+              {
+                "chunk_id": "8edaf9f8-2940-5439-aaf3-e4c14e485eab",
+                "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+                "filename": "module03_research_note.md",
+                "page": 1,
+                "start": 320,
+                "end": 720,
+                "text": "中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，120条保留给最终验收。保留集不能被用于反复调整检索阈值。对每个问题记录可支持回答的原文证据，允许标注资料中没有答案的问题。模型回答流畅不代表检索正确，检索排名靠前也不代表该片段足以支持答案。评估时分别检查召回、回答是否得到原文支持以及引用位置是否正确。\n\n## 文档处理\n\n文档按页提取正文，每个片段保留文档标识、页码与字符偏移。当前教学实现采用400字符的窗口和80字符的重叠；它是一种便于观察的滑窗实现，后续可以比较按段落或token切分的效果。保留重叠是为了降低一句话横跨边界时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失",
+                "score": 0.446060315830532,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 0,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              },
+              {
+                "chunk_id": "33081630-7be6-5db7-a270-1307fb4674b4",
+                "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+                "filename": "module03_research_note.md",
+                "page": 1,
+                "start": 640,
+                "end": 806,
+                "text": "时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失败案例和已知限制。对没有相关证据的问题，系统应说明当前资料不足，不能编造不存在的页码、实验结果或人员身份。扫描版PDF需要额外OCR流程；本轮实验只使用可提取文本的文件。\n",
+                "score": 0.3531035128896781,
+                "sources": [
+                  {
+                    "message_id": "f992ddd69f3f075dfbd1d937",
+                    "attachment_index": 0,
+                    "source": "manual",
+                    "account_id": "demo",
+                    "source_message_id": "module03-files-001",
+                    "sender_id": "demo-teacher-001",
+                    "sender_name": "示例老师",
+                    "sent_at": "2026-10-16T10:00:00+08:00"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "history_count": 5
+      }
+    },
+    {
+      "name": "duplicate_bytes_reuse_index",
+      "transport": "real CLI/TCP",
+      "response": {
+        "status": "exists",
+        "document": {
+          "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+          "filename": "module03_research_note.md",
+          "sha256": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+          "status": "indexed",
+          "error_code": null,
+          "page_count": 1,
+          "chunk_count": 3,
+          "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+          "sources": [
+            {
+              "message_id": "f992ddd69f3f075dfbd1d937",
+              "attachment_index": 0,
+              "source": "manual",
+              "account_id": "demo",
+              "source_message_id": "module03-files-001",
+              "sender_id": "demo-teacher-001",
+              "sender_name": "示例老师",
+              "sent_at": "2026-10-16T10:00:00+08:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "source_hints_overlay_actual_indexed_files",
+      "transport": "real CLI/TCP",
+      "response": {
+        "message_id": "f992ddd69f3f075dfbd1d937",
+        "source_message": {
+          "account_id": "demo",
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "module03_research_note.md",
+              "media_type": null,
+              "source_attachment_id": null
+            },
+            {
+              "availability": "mentioned",
+              "filename": "module03_student_life.md",
+              "media_type": null,
+              "source_attachment_id": null
+            }
+          ],
+          "sender_id": "demo-teacher-001",
+          "sender_name": "示例老师",
+          "sent_at": "2026-10-16T10:00:00+08:00",
+          "source": "manual",
+          "source_message_id": "module03-files-001",
+          "text": "发来两份教学材料供查阅，附件分别是星河计划检索实验方案和学生日常办事指南。本消息没有新增待办。"
+        },
+        "processing_status": "completed",
+        "error_code": null,
+        "analysis": {
+          "attachment_count": 2,
+          "attachment_description": "星河计划检索实验方案和学生日常办事指南",
+          "category": "研究",
+          "events": [],
+          "summary": "示例老师发来两份教学材料供查阅，附件分别是星河计划检索实验方案和学生日常办事指南；消息明确没有新增待办。"
+        },
+        "events": [],
+        "attachments": [
+          {
+            "availability": "indexed",
+            "filename": "module03_research_note.md",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "status": "indexed"
+          },
+          {
+            "availability": "indexed",
+            "filename": "module03_student_life.md",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text",
+            "document_id": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+            "status": "indexed"
+          }
+        ],
+        "role_match": null,
+        "priority": "normal"
+      }
+    },
+    {
+      "name": "original_bytes_download",
+      "http_status": 200,
+      "sha256": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240"
+    },
+    {
+      "name": "semantic_search_after_process_restart",
+      "transport": "real CLI/TCP",
+      "response": {
+        "query": "研究实验对检索覆盖率设定了什么最低要求？",
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "hits": [
+          {
+            "chunk_id": "8edaf9f8-2940-5439-aaf3-e4c14e485eab",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 320,
+            "end": 720,
+            "text": "中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，120条保留给最终验收。保留集不能被用于反复调整检索阈值。对每个问题记录可支持回答的原文证据，允许标注资料中没有答案的问题。模型回答流畅不代表检索正确，检索排名靠前也不代表该片段足以支持答案。评估时分别检查召回、回答是否得到原文支持以及引用位置是否正确。\n\n## 文档处理\n\n文档按页提取正文，每个片段保留文档标识、页码与字符偏移。当前教学实现采用400字符的窗口和80字符的重叠；它是一种便于观察的滑窗实现，后续可以比较按段落或token切分的效果。保留重叠是为了降低一句话横跨边界时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失",
+            "score": 0.5345465585735716,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          },
+          {
+            "chunk_id": "0fd37588-8215-5b35-8de1-2a0da2533073",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 0,
+            "end": 400,
+            "text": "# 星河计划检索实验方案\n\n这是本项目原创的合成教学材料，用于测试文档解析、分块、向量检索和带引用回答，不是一篇真实发表的论文。\n\n## 研究目标\n\n星河计划研究个人通知与研究资料如何共同支持学生的日常工作。系统需要保存消息来源、原文及原始发送时间，区分人工上传的文件、仅收到文件名的线索和已经提取正文的文件。聊天会话使用独立的会话编号，业务事项使用可追溯的来源消息编号。研究阶段先验证可重现的小规模实验，再考虑接入更多真实渠道。\n\n## 检索验收指标\n\n检索验收要求：Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。Recall@5表示前五个检索结果中是否包含问题对应的证据片段。验收时需要同时记录查询、目标文档、实际命中片段、相似度和耗时。这里的指标是本教学实验的设定，不能当成所有研究项目通用的行业标准。\n\n## 样本与评估\n\n实验准备480条查询，其中360条用于开发，12",
+            "score": 0.5319519717944766,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          },
+          {
+            "chunk_id": "33081630-7be6-5db7-a270-1307fb4674b4",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 640,
+            "end": 806,
+            "text": "时丢失上下文的机会。索引必须保留原件，相同字节的文件重复上传可以复用已有索引。\n\n## 实验安排\n\n结果评审在实验楼302进行。评审材料需要列出真实测试样例、失败案例和已知限制。对没有相关证据的问题，系统应说明当前资料不足，不能编造不存在的页码、实验结果或人员身份。扫描版PDF需要额外OCR流程；本轮实验只使用可提取文本的文件。\n",
+            "score": 0.4950056173736884,
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "document_metadata_after_restart",
+      "transport": "real CLI/TCP",
+      "response": {
+        "count": 2,
+        "documents": [
+          {
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "sha256": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "status": "indexed",
+            "error_code": null,
+            "page_count": 1,
+            "chunk_count": 3,
+            "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          },
+          {
+            "document_id": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+            "filename": "module03_student_life.md",
+            "sha256": "e5e6d3ff4252656f165dfedfa63179d1637e680af59aea160cec1b3d65b0a02e",
+            "status": "indexed",
+            "error_code": null,
+            "page_count": 1,
+            "chunk_count": 2,
+            "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+            "sources": [
+              {
+                "message_id": "f992ddd69f3f075dfbd1d937",
+                "attachment_index": 1,
+                "source": "manual",
+                "account_id": "demo",
+                "source_message_id": "module03-files-001",
+                "sender_id": "demo-teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-16T10:00:00+08:00"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "assertions": {
+    "real_512_dimensional_local_embedding": true,
+    "semantic_paraphrase_hits_research_file_first": true,
+    "qdrant_vectors_persisted_and_reopened": true,
+    "actual_original_bytes_preserved": true,
+    "answer_quotes_reproduce_exact_source_offsets": true,
+    "unknown_has_no_fabricated_citations": true,
+    "main_agent_tool_uses_same_document_index": true,
+    "duplicate_bytes_return_exists": true,
+    "actual_files_bound_without_mutating_original_message_hints": true,
+    "process_restart_keeps_same_chunk_ids_and_document_count": true,
+    "temporary_processes_and_stores_cleaned": true
+  },
+  "embedding_probe": {
+    "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+    "dimension": 512,
+    "norm": 0.9999999889957217,
+    "scores": [
+      0.5570140401036294,
+      0.2867772184925784
+    ]
+  },
+  "restart_evidence": {
+    "before_pid": 24416,
+    "after_pid": 26548,
+    "same_business_and_vector_paths": true
+  },
+  "passed": true
+}

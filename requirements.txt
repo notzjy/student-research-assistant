@@ -1,0 +1,12 @@
+# 主服务复用已经验证的教学依赖，并加入与工具包一致的SQLite检查点组件。
+-r lessons/requirements.txt
+langgraph-checkpoint-sqlite==3.1.0
+aiosqlite==0.22.1
+# 文档解析、本地中文Embedding与持久向量检索。
+pypdf==6.20.1
+fastembed==0.9.0
+qdrant-client==1.19.1
+# 本机交互界面只通过HTTP访问主服务，独立于后台消息与提醒运行。
+streamlit==1.66.0
+# 手机接入二维码由本机生成，不将配对令牌交给第三方二维码服务。
+qrcode==8.2

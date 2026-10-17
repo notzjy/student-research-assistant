@@ -1,0 +1,315 @@
+{
+  "verified_at": "2026-10-17T04:01:18.948896+08:00",
+  "mode": "actual HTTP + Streamlit AppTest + DeepSeek + cached BGE512/Qdrant; synthetic fixtures; QQ disabled",
+  "checks": [
+    {
+      "name": "isolated_backend_no_mail_or_auto_reminders",
+      "passed": true
+    },
+    {
+      "name": "real_deepseek_message_analysis",
+      "passed": true,
+      "message": {
+        "message_id": "34cff6aec3cfac6c8dfdc517",
+        "source_message": {
+          "account_id": "module06-demo",
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "module06-research.md",
+              "media_type": null,
+              "source_attachment_id": null
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null
+            }
+          ],
+          "sender_id": "teacher-001",
+          "sender_name": "示例老师",
+          "sent_at": "2026-10-17T10:00:00+08:00",
+          "source": "manual",
+          "source_message_id": "module06-001",
+          "text": "明天下午三点在实验楼302开组会；下周三前交综述，附件是两份参考材料。"
+        },
+        "processing_status": "completed",
+        "error_code": null,
+        "analysis": {
+          "attachment_count": 2,
+          "attachment_description": "附件是两份参考材料",
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "明天下午三点在实验楼302开组会",
+              "location": "实验楼302",
+              "time_extraction": {
+                "intent": {
+                  "hour": 15,
+                  "is_deadline": false,
+                  "minute": 0,
+                  "offset": 1,
+                  "unit": "day",
+                  "weekday": null
+                },
+                "reason": null
+              },
+              "time_text": "明天下午三点",
+              "title": "参加组会"
+            },
+            {
+              "evidence": "下周三前交综述",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "hour": null,
+                  "is_deadline": true,
+                  "minute": null,
+                  "offset": 1,
+                  "unit": "week",
+                  "weekday": 2
+                },
+                "reason": null
+              },
+              "time_text": "下周三前",
+              "title": "提交综述"
+            }
+          ],
+          "summary": "老师通知明天下午三点在实验楼302开组会，并要求下周三前提交综述，附件为两份参考材料。"
+        },
+        "events": [
+          {
+            "task_id": "07d2aad99e6dc092",
+            "title": "参加组会",
+            "time_text": "明天下午三点",
+            "location": "实验楼302",
+            "status": "pending",
+            "evidence": "明天下午三点在实验楼302开组会",
+            "time": {
+              "at": "2026-10-18T15:00:00+08:00",
+              "precision": "minute",
+              "reference_time": "2026-10-17T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "point",
+              "time_text": "明天下午三点",
+              "timezone": "UTC+08:00"
+            }
+          },
+          {
+            "task_id": "f9d88852ca1ddf7e",
+            "title": "提交综述",
+            "time_text": "下周三前",
+            "location": null,
+            "status": "pending",
+            "evidence": "下周三前交综述",
+            "time": {
+              "date": "2026-10-21",
+              "precision": "date",
+              "reference_time": "2026-10-17T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "deadline",
+              "time_text": "下周三前",
+              "timezone": "UTC+08:00"
+            }
+          }
+        ],
+        "attachments": [
+          {
+            "availability": "mentioned",
+            "filename": "module06-research.md",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text"
+          },
+          {
+            "availability": "mentioned",
+            "filename": "reference-b.pdf",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text"
+          }
+        ],
+        "role_match": {
+          "source": "manual",
+          "account_id": "module06-demo",
+          "sender_id": "teacher-001",
+          "role": "导师",
+          "important": true
+        },
+        "priority": "high"
+      }
+    },
+    {
+      "name": "time_precision_preserved",
+      "passed": true
+    },
+    {
+      "name": "real_ui_messages_badges",
+      "passed": true
+    },
+    {
+      "name": "real_ui_category_role_filter",
+      "passed": true
+    },
+    {
+      "name": "real_ui_completion_cancels_unsubmitted_reminder",
+      "passed": true
+    },
+    {
+      "name": "real_file_upload_embedding_and_download",
+      "passed": true,
+      "document": {
+        "document_id": "0a5d92fd0af031285c84ad6b91c36774f5cbac75bd1fd9e0122093c71794dc02",
+        "filename": "module06-research.md",
+        "sha256": "0a5d92fd0af031285c84ad6b91c36774f5cbac75bd1fd9e0122093c71794dc02",
+        "status": "indexed",
+        "error_code": null,
+        "page_count": 1,
+        "chunk_count": 1,
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "sources": [
+          {
+            "message_id": "34cff6aec3cfac6c8dfdc517",
+            "attachment_index": 0,
+            "source": "manual",
+            "account_id": "module06-demo",
+            "source_message_id": "module06-001",
+            "sender_id": "teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-17T10:00:00+08:00"
+          }
+        ]
+      },
+      "sha256": "0a5d92fd0af031285c84ad6b91c36774f5cbac75bd1fd9e0122093c71794dc02"
+    },
+    {
+      "name": "real_ui_rag_ask_with_citation",
+      "passed": true,
+      "answer": {
+        "question": "星河研究的实验阈值是多少？",
+        "status": "answered",
+        "answer": "星河研究的实验阈值固定为0.85。",
+        "citations": [
+          {
+            "chunk_id": "5b08f3f2-0c2a-5ac1-9281-d48b99d99b25",
+            "quote": "实验阈值固定为0.85",
+            "document_id": "0a5d92fd0af031285c84ad6b91c36774f5cbac75bd1fd9e0122093c71794dc02",
+            "filename": "module06-research.md",
+            "page": 1,
+            "start": 30,
+            "end": 41,
+            "score": 0.6622393604954977,
+            "sources": [
+              {
+                "message_id": "34cff6aec3cfac6c8dfdc517",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "module06-demo",
+                "source_message_id": "module06-001",
+                "sender_id": "teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-17T10:00:00+08:00"
+              }
+            ]
+          }
+        ],
+        "reason": null,
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "retrieved_count": 1
+      }
+    },
+    {
+      "name": "real_ui_policy_roles_safe_mail_status",
+      "passed": true
+    },
+    {
+      "name": "real_ui_trace_list",
+      "passed": true
+    },
+    {
+      "name": "real_ui_chat_thread_reuse",
+      "passed": true,
+      "response": {
+        "thread_id": "71e6465498c34b26a6a6371172cb93d1",
+        "turn_id": "9fe48e3d-b8ad-41cf-9b8d-04135f0a897c",
+        "reply": "星河六号。",
+        "execution_status": "no_tools",
+        "node_order": [
+          "model"
+        ],
+        "tool_names": [],
+        "tool_results": [],
+        "history_count": 4
+      }
+    },
+    {
+      "name": "real_ui_explicit_new_thread",
+      "passed": true
+    },
+    {
+      "name": "actual_streamlit_server",
+      "passed": true,
+      "launcher_pid": 16580
+    },
+    {
+      "name": "actual_browser_screenshot",
+      "passed": true,
+      "path": "docs/results/module06_dashboard.png",
+      "sha256": "b9490c18322eb7a5b79ab8a427ef0cc45c338f1f104cbd42a25bda8927e6b17f",
+      "rendered_message": true,
+      "rendered_location": true
+    },
+    {
+      "name": "old_backend_stopped",
+      "passed": true
+    },
+    {
+      "name": "actual_process_restart_persistence",
+      "passed": true,
+      "history_count": 4,
+      "search_hits": 1,
+      "trace_count": 27
+    }
+  ],
+  "actual_server_process_ids": [
+    28216,
+    26300
+  ],
+  "status": "passed",
+  "temporary_data_removed": true,
+  "regression": {
+    "root_tests": 145,
+    "lesson_tests": 73,
+    "total": 218,
+    "status": "passed",
+    "added": {
+      "dashboard_api": 9,
+      "task_completion_api": 3,
+      "streamlit_ui": 8
+    }
+  },
+  "dependencies": {
+    "streamlit": "1.66.0",
+    "locked_packages": 96,
+    "pip_check": "passed",
+    "windows_only_markers": [
+      "pywin32",
+      "win32_setctime"
+    ]
+  },
+  "delivery": {
+    "git_initialized": true,
+    "branch": "main",
+    "staged": false,
+    "committed": false,
+    "remote_configured": false,
+    "docker_cli_available": false,
+    "docker_validation": "static only; build/run not performed",
+    "screenshot_visually_reviewed": true,
+    "real_qq_access_this_run": false,
+    "windows_notifications_this_run": false
+  }
+}

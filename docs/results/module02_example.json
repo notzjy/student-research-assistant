@@ -1,0 +1,963 @@
+{
+  "verified_at": "2026-10-16T14:32:47.945650+08:00",
+  "mode": "real DeepSeek + real CLI/TCP; synthetic examples; temporary databases",
+  "checks": [
+    {
+      "name": "configure_example_role",
+      "transport": "real CLI + TCP",
+      "response": {
+        "source": "manual",
+        "account_id": "demo",
+        "sender_id": "demo-teacher-001",
+        "role": "导师",
+        "important": true
+      }
+    },
+    {
+      "name": "import_full_message",
+      "transport": "real CLI + TCP",
+      "response": {
+        "status": "processed",
+        "message": {
+          "message_id": "2a97bf5c639dd4933394e2ff",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module02-001",
+            "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "两篇参考论文：reference-a.pdf、reference-b.pdf",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302开组会",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "开组会"
+              },
+              {
+                "evidence": "周五前交综述",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "提交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述；随附两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+          },
+          "events": [
+            {
+              "task_id": "30a3b92aedbdfc50",
+              "title": "开组会",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302开组会",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "ad8ed15efdda59cb",
+              "title": "提交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "pending",
+              "evidence": "周五前交综述",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": {
+            "source": "manual",
+            "account_id": "demo",
+            "sender_id": "demo-teacher-001",
+            "role": "导师",
+            "important": true
+          },
+          "priority": "high"
+        }
+      }
+    },
+    {
+      "name": "repeat_same_source_id",
+      "transport": "real CLI + TCP",
+      "response": {
+        "status": "exists",
+        "message": {
+          "message_id": "2a97bf5c639dd4933394e2ff",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module02-001",
+            "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "两篇参考论文：reference-a.pdf、reference-b.pdf",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302开组会",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "开组会"
+              },
+              {
+                "evidence": "周五前交综述",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "提交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述；随附两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+          },
+          "events": [
+            {
+              "task_id": "30a3b92aedbdfc50",
+              "title": "开组会",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302开组会",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "ad8ed15efdda59cb",
+              "title": "提交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "pending",
+              "evidence": "周五前交综述",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": {
+            "source": "manual",
+            "account_id": "demo",
+            "sender_id": "demo-teacher-001",
+            "role": "导师",
+            "important": true
+          },
+          "priority": "high"
+        }
+      }
+    },
+    {
+      "name": "two_tasks_no_duplicates",
+      "http_status": 200,
+      "response": {
+        "count": 2,
+        "tasks": [
+          {
+            "id": "30a3b92aedbdfc50",
+            "title": "开组会",
+            "time_text": "明天下午三点",
+            "location": "实验楼302",
+            "status": "pending"
+          },
+          {
+            "id": "ad8ed15efdda59cb",
+            "title": "提交综述",
+            "time_text": "周五前",
+            "location": null,
+            "status": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "name": "changed_body_same_id_conflicts",
+      "http_status": 409,
+      "response": {
+        "detail": {
+          "message_id": "2a97bf5c639dd4933394e2ff",
+          "message": "相同来源消息编号对应的内容不同，请核对原始输入。"
+        }
+      }
+    },
+    {
+      "name": "category_and_important_filter",
+      "http_status": 200,
+      "response": {
+        "count": 1,
+        "messages": [
+          {
+            "message_id": "2a97bf5c639dd4933394e2ff",
+            "source_message": {
+              "account_id": "demo",
+              "attachments": [
+                {
+                  "availability": "mentioned",
+                  "filename": "reference-a.pdf",
+                  "media_type": null,
+                  "source_attachment_id": null
+                },
+                {
+                  "availability": "mentioned",
+                  "filename": "reference-b.pdf",
+                  "media_type": null,
+                  "source_attachment_id": null
+                }
+              ],
+              "sender_id": "demo-teacher-001",
+              "sender_name": "示例老师",
+              "sent_at": "2026-10-16T10:00:00+08:00",
+              "source": "manual",
+              "source_message_id": "module02-001",
+              "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+            },
+            "processing_status": "completed",
+            "error_code": null,
+            "analysis": {
+              "attachment_count": 2,
+              "attachment_description": "两篇参考论文：reference-a.pdf、reference-b.pdf",
+              "category": "研究",
+              "events": [
+                {
+                  "evidence": "明天下午三点在实验楼302开组会",
+                  "location": "实验楼302",
+                  "time_extraction": {
+                    "intent": {
+                      "hour": 15,
+                      "is_deadline": false,
+                      "minute": 0,
+                      "offset": 1,
+                      "unit": "day",
+                      "weekday": null
+                    },
+                    "reason": null
+                  },
+                  "time_text": "明天下午三点",
+                  "title": "开组会"
+                },
+                {
+                  "evidence": "周五前交综述",
+                  "location": null,
+                  "time_extraction": {
+                    "intent": {
+                      "hour": null,
+                      "is_deadline": true,
+                      "minute": null,
+                      "offset": 0,
+                      "unit": "week",
+                      "weekday": 4
+                    },
+                    "reason": null
+                  },
+                  "time_text": "周五前",
+                  "title": "提交综述"
+                }
+              ],
+              "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述；随附两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+            },
+            "events": [
+              {
+                "task_id": "30a3b92aedbdfc50",
+                "title": "开组会",
+                "time_text": "明天下午三点",
+                "location": "实验楼302",
+                "status": "pending",
+                "evidence": "明天下午三点在实验楼302开组会",
+                "time": {
+                  "at": "2026-10-17T15:00:00+08:00",
+                  "precision": "minute",
+                  "reference_time": "2026-10-16T10:00:00+08:00",
+                  "status": "resolved",
+                  "time_kind": "point",
+                  "time_text": "明天下午三点",
+                  "timezone": "UTC+08:00"
+                }
+              },
+              {
+                "task_id": "ad8ed15efdda59cb",
+                "title": "提交综述",
+                "time_text": "周五前",
+                "location": null,
+                "status": "pending",
+                "evidence": "周五前交综述",
+                "time": {
+                  "date": "2026-10-16",
+                  "precision": "date",
+                  "reference_time": "2026-10-16T10:00:00+08:00",
+                  "status": "resolved",
+                  "time_kind": "deadline",
+                  "time_text": "周五前",
+                  "timezone": "UTC+08:00"
+                }
+              }
+            ],
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null,
+                "category": "研究",
+                "classification_basis": "message_text"
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null,
+                "category": "研究",
+                "classification_basis": "message_text"
+              }
+            ],
+            "role_match": {
+              "source": "manual",
+              "account_id": "demo",
+              "sender_id": "demo-teacher-001",
+              "role": "导师",
+              "important": true
+            },
+            "priority": "high"
+          }
+        ]
+      }
+    },
+    {
+      "name": "main_agent_queries_and_completes_imported_task",
+      "transport": "real CLI + TCP",
+      "response": {
+        "thread_id": "module02-tools",
+        "turn_id": "f5fe16fa-e976-48c9-905e-69ab2c666a8a",
+        "reply": "共查到 2 项待办：\n\n1. **开组会**（明天下午三点，实验楼302）— 未完成\n2. **提交综述**（周五前）— 未完成\n\n已按要求把「提交综述」标记为已完成。现在剩「开组会」仍未完成。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks",
+          "complete_task"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "all",
+            "count": 2,
+            "tasks": [
+              {
+                "id": "30a3b92aedbdfc50",
+                "title": "开组会",
+                "time_text": "明天下午三点",
+                "location": "实验楼302",
+                "status": "pending"
+              },
+              {
+                "id": "ad8ed15efdda59cb",
+                "title": "提交综述",
+                "time_text": "周五前",
+                "location": null,
+                "status": "pending"
+              }
+            ]
+          },
+          {
+            "status": "completed",
+            "task": {
+              "id": "ad8ed15efdda59cb",
+              "title": "提交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "completed"
+            }
+          }
+        ],
+        "history_count": 6
+      }
+    },
+    {
+      "name": "trace_original_and_live_task_status",
+      "transport": "real CLI + TCP",
+      "response": {
+        "message_id": "2a97bf5c639dd4933394e2ff",
+        "source_message": {
+          "account_id": "demo",
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null
+            }
+          ],
+          "sender_id": "demo-teacher-001",
+          "sender_name": "示例老师",
+          "sent_at": "2026-10-16T10:00:00+08:00",
+          "source": "manual",
+          "source_message_id": "module02-001",
+          "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+        },
+        "processing_status": "completed",
+        "error_code": null,
+        "analysis": {
+          "attachment_count": 2,
+          "attachment_description": "两篇参考论文：reference-a.pdf、reference-b.pdf",
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "明天下午三点在实验楼302开组会",
+              "location": "实验楼302",
+              "time_extraction": {
+                "intent": {
+                  "hour": 15,
+                  "is_deadline": false,
+                  "minute": 0,
+                  "offset": 1,
+                  "unit": "day",
+                  "weekday": null
+                },
+                "reason": null
+              },
+              "time_text": "明天下午三点",
+              "title": "开组会"
+            },
+            {
+              "evidence": "周五前交综述",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "hour": null,
+                  "is_deadline": true,
+                  "minute": null,
+                  "offset": 0,
+                  "unit": "week",
+                  "weekday": 4
+                },
+                "reason": null
+              },
+              "time_text": "周五前",
+              "title": "提交综述"
+            }
+          ],
+          "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述；随附两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+        },
+        "events": [
+          {
+            "task_id": "30a3b92aedbdfc50",
+            "title": "开组会",
+            "time_text": "明天下午三点",
+            "location": "实验楼302",
+            "status": "pending",
+            "evidence": "明天下午三点在实验楼302开组会",
+            "time": {
+              "at": "2026-10-17T15:00:00+08:00",
+              "precision": "minute",
+              "reference_time": "2026-10-16T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "point",
+              "time_text": "明天下午三点",
+              "timezone": "UTC+08:00"
+            }
+          },
+          {
+            "task_id": "ad8ed15efdda59cb",
+            "title": "提交综述",
+            "time_text": "周五前",
+            "location": null,
+            "status": "completed",
+            "evidence": "周五前交综述",
+            "time": {
+              "date": "2026-10-16",
+              "precision": "date",
+              "reference_time": "2026-10-16T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "deadline",
+              "time_text": "周五前",
+              "timezone": "UTC+08:00"
+            }
+          }
+        ],
+        "attachments": [
+          {
+            "availability": "mentioned",
+            "filename": "reference-a.pdf",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text"
+          },
+          {
+            "availability": "mentioned",
+            "filename": "reference-b.pdf",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text"
+          }
+        ],
+        "role_match": {
+          "source": "manual",
+          "account_id": "demo",
+          "sender_id": "demo-teacher-001",
+          "role": "导师",
+          "important": true
+        },
+        "priority": "high"
+      }
+    },
+    {
+      "name": "repeat_preserves_completed_task",
+      "transport": "real CLI + TCP",
+      "response": {
+        "status": "exists",
+        "message": {
+          "message_id": "2a97bf5c639dd4933394e2ff",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module02-001",
+            "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "两篇参考论文：reference-a.pdf、reference-b.pdf",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302开组会",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "开组会"
+              },
+              {
+                "evidence": "周五前交综述",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "提交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述；随附两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+          },
+          "events": [
+            {
+              "task_id": "30a3b92aedbdfc50",
+              "title": "开组会",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302开组会",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "ad8ed15efdda59cb",
+              "title": "提交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "completed",
+              "evidence": "周五前交综述",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": {
+            "source": "manual",
+            "account_id": "demo",
+            "sender_id": "demo-teacher-001",
+            "role": "导师",
+            "important": true
+          },
+          "priority": "high"
+        }
+      }
+    },
+    {
+      "name": "change_user_rule",
+      "http_status": 200,
+      "response": {
+        "source": "manual",
+        "account_id": "demo",
+        "sender_id": "demo-teacher-001",
+        "role": "导师",
+        "important": false
+      }
+    },
+    {
+      "name": "priority_uses_current_user_rule",
+      "http_status": 200,
+      "response": {
+        "message_id": "2a97bf5c639dd4933394e2ff",
+        "source_message": {
+          "account_id": "demo",
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null
+            }
+          ],
+          "sender_id": "demo-teacher-001",
+          "sender_name": "示例老师",
+          "sent_at": "2026-10-16T10:00:00+08:00",
+          "source": "manual",
+          "source_message_id": "module02-001",
+          "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+        },
+        "processing_status": "completed",
+        "error_code": null,
+        "analysis": {
+          "attachment_count": 2,
+          "attachment_description": "两篇参考论文：reference-a.pdf、reference-b.pdf",
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "明天下午三点在实验楼302开组会",
+              "location": "实验楼302",
+              "time_extraction": {
+                "intent": {
+                  "hour": 15,
+                  "is_deadline": false,
+                  "minute": 0,
+                  "offset": 1,
+                  "unit": "day",
+                  "weekday": null
+                },
+                "reason": null
+              },
+              "time_text": "明天下午三点",
+              "title": "开组会"
+            },
+            {
+              "evidence": "周五前交综述",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "hour": null,
+                  "is_deadline": true,
+                  "minute": null,
+                  "offset": 0,
+                  "unit": "week",
+                  "weekday": 4
+                },
+                "reason": null
+              },
+              "time_text": "周五前",
+              "title": "提交综述"
+            }
+          ],
+          "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述；随附两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+        },
+        "events": [
+          {
+            "task_id": "30a3b92aedbdfc50",
+            "title": "开组会",
+            "time_text": "明天下午三点",
+            "location": "实验楼302",
+            "status": "pending",
+            "evidence": "明天下午三点在实验楼302开组会",
+            "time": {
+              "at": "2026-10-17T15:00:00+08:00",
+              "precision": "minute",
+              "reference_time": "2026-10-16T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "point",
+              "time_text": "明天下午三点",
+              "timezone": "UTC+08:00"
+            }
+          },
+          {
+            "task_id": "ad8ed15efdda59cb",
+            "title": "提交综述",
+            "time_text": "周五前",
+            "location": null,
+            "status": "completed",
+            "evidence": "周五前交综述",
+            "time": {
+              "date": "2026-10-16",
+              "precision": "date",
+              "reference_time": "2026-10-16T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "deadline",
+              "time_text": "周五前",
+              "timezone": "UTC+08:00"
+            }
+          }
+        ],
+        "attachments": [
+          {
+            "availability": "mentioned",
+            "filename": "reference-a.pdf",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text"
+          },
+          {
+            "availability": "mentioned",
+            "filename": "reference-b.pdf",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text"
+          }
+        ],
+        "role_match": {
+          "source": "manual",
+          "account_id": "demo",
+          "sender_id": "demo-teacher-001",
+          "role": "导师",
+          "important": false
+        },
+        "priority": "normal"
+      }
+    }
+  ],
+  "assertions": {
+    "raw_text_and_metadata_preserved": true,
+    "two_attachment_hints_preserved_not_downloaded": true,
+    "user_role_matches_exact_identity": true,
+    "single_analysis_produced_two_source_anchored_times": true,
+    "repeat_same_id_does_not_duplicate_tasks": true,
+    "changed_same_id_is_409_and_original_preserved": true,
+    "main_agent_updates_shared_imported_task": true,
+    "source_detail_reads_live_task_status": true,
+    "repeat_import_keeps_completed_status": true,
+    "role_change_updates_priority_without_model": true,
+    "business_data_survives_process_stop_and_reopen": true,
+    "verification_process_stopped_and_temp_databases_removed": true
+  },
+  "passed": true
+}

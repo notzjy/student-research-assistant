@@ -1,0 +1,1125 @@
+{
+  "verified_at": "2026-10-16T20:20:22.288643+08:00",
+  "mode": "actual CLI/TCP + DeepSeek + cached BGE512/Qdrant + Trace persistence; synthetic fixtures; QQ disabled",
+  "actual_server_process_ids": [
+    "12700",
+    "24528"
+  ],
+  "checks": [
+    {
+      "name": "--ingest",
+      "trace_id": "128d2c413c034f9a93a9454cc108f610",
+      "response": {
+        "status": "processed",
+        "message": {
+          "message_id": "b8d83228c9681753b484a34e",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module05-observe-001",
+            "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "两篇参考论文",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302开组会；",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "在实验楼302开组会"
+              },
+              {
+                "evidence": "周五前交综述，附件是两篇参考论文。",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "提交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述，附件为两篇参考论文。"
+          },
+          "events": [
+            {
+              "task_id": "cef00f7f1f1b4002",
+              "title": "在实验楼302开组会",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302开组会；",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "383265bdd39fa8c0",
+              "title": "提交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "pending",
+              "evidence": "周五前交综述，附件是两篇参考论文。",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": null,
+          "priority": "normal"
+        },
+        "reminder_planning": {
+          "enabled": false,
+          "planned": [],
+          "skipped": []
+        }
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--trace",
+      "trace_id": null,
+      "response": {
+        "trace_id": "128d2c413c034f9a93a9454cc108f610",
+        "operation": "messages.ingest",
+        "status": "completed",
+        "started_at": "2026-10-16T12:20:04.385092+00:00",
+        "finished_at": "2026-10-16T12:20:07.799381+00:00",
+        "elapsed_ms": 3414.289,
+        "http_status": 200,
+        "error_code": null,
+        "spans": [
+          {
+            "span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "parent_span_id": null,
+            "name": "http.request",
+            "status": "completed",
+            "elapsed_ms": 3402.344100002665,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:04.391061+00:00"
+          },
+          {
+            "span_id": "5e8529f131da4f5f85113214944db259",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.receive",
+            "status": "completed",
+            "elapsed_ms": 6.400799989933148,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:04.391981+00:00"
+          },
+          {
+            "span_id": "79ab65d4265e4c59a4cecd106b97abad",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.analyze",
+            "status": "completed",
+            "elapsed_ms": 1823.980399989523,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:05.938766+00:00"
+          },
+          {
+            "span_id": "99d0ffe400104fed9b65f2bcd7accaa0",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.resolve_times",
+            "status": "completed",
+            "elapsed_ms": 0.5395000043790787,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:07.769564+00:00"
+          },
+          {
+            "span_id": "284c919a82d847969f1ceff3fcad8263",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.persist",
+            "status": "completed",
+            "elapsed_ms": 5.795700009912252,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:07.776108+00:00"
+          },
+          {
+            "span_id": "7dcb96e3c5e1452d8f9bd2c9173a414c",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "reminder.plan",
+            "status": "completed",
+            "elapsed_ms": 0.919599988264963,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:07.787210+00:00"
+          }
+        ]
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--traces",
+      "trace_id": null,
+      "response": {
+        "count": 1,
+        "traces": [
+          {
+            "trace_id": "128d2c413c034f9a93a9454cc108f610",
+            "operation": "messages.ingest",
+            "status": "completed",
+            "started_at": "2026-10-16T12:20:04.385092+00:00",
+            "finished_at": "2026-10-16T12:20:07.799381+00:00",
+            "elapsed_ms": 3414.289,
+            "http_status": 200,
+            "error_code": null
+          }
+        ]
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--ingest",
+      "trace_id": "b66860272e844cb5b006aa53ad977f88",
+      "response": {
+        "status": "exists",
+        "message": {
+          "message_id": "b8d83228c9681753b484a34e",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module05-observe-001",
+            "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "两篇参考论文",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302开组会；",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "在实验楼302开组会"
+              },
+              {
+                "evidence": "周五前交综述，附件是两篇参考论文。",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "提交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302开组会，并要求周五前提交综述，附件为两篇参考论文。"
+          },
+          "events": [
+            {
+              "task_id": "cef00f7f1f1b4002",
+              "title": "在实验楼302开组会",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302开组会；",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "383265bdd39fa8c0",
+              "title": "提交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "pending",
+              "evidence": "周五前交综述，附件是两篇参考论文。",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": null,
+          "priority": "normal"
+        }
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--trace",
+      "trace_id": null,
+      "response": {
+        "trace_id": "b66860272e844cb5b006aa53ad977f88",
+        "operation": "messages.ingest",
+        "status": "completed",
+        "started_at": "2026-10-16T12:20:09.116935+00:00",
+        "finished_at": "2026-10-16T12:20:09.137426+00:00",
+        "elapsed_ms": 20.491,
+        "http_status": 200,
+        "error_code": null,
+        "spans": [
+          {
+            "span_id": "f9c86d74ee054ae49b4d609223c28633",
+            "parent_span_id": null,
+            "name": "http.request",
+            "status": "completed",
+            "elapsed_ms": 7.842599996365607,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:09.123437+00:00"
+          },
+          {
+            "span_id": "960c8418d0cc4629919bebdac2d6a452",
+            "parent_span_id": "f9c86d74ee054ae49b4d609223c28633",
+            "name": "message.receive",
+            "status": "completed",
+            "elapsed_ms": 0.9957000147551298,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:09.123720+00:00"
+          }
+        ]
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--index-file",
+      "trace_id": "5f95ac03b0084f1c997081d5762b5183",
+      "response": {
+        "status": "indexed",
+        "document": {
+          "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+          "filename": "module03_research_note.md",
+          "sha256": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+          "status": "indexed",
+          "error_code": null,
+          "page_count": 1,
+          "chunk_count": 3,
+          "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+          "sources": []
+        }
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--trace",
+      "trace_id": null,
+      "response": {
+        "trace_id": "5f95ac03b0084f1c997081d5762b5183",
+        "operation": "documents.index",
+        "status": "completed",
+        "started_at": "2026-10-16T12:20:09.996680+00:00",
+        "finished_at": "2026-10-16T12:20:10.476186+00:00",
+        "elapsed_ms": 479.506,
+        "http_status": 200,
+        "error_code": null,
+        "spans": [
+          {
+            "span_id": "4f8b450ee7314e8695b41cdf27af6741",
+            "parent_span_id": null,
+            "name": "http.request",
+            "status": "completed",
+            "elapsed_ms": 467.6325999898836,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:10.002463+00:00"
+          },
+          {
+            "span_id": "ab342301143c45a6b4adcdf9c144eff6",
+            "parent_span_id": "4f8b450ee7314e8695b41cdf27af6741",
+            "name": "document.receive",
+            "status": "completed",
+            "elapsed_ms": 6.4079000148922205,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:10.003226+00:00"
+          },
+          {
+            "span_id": "68cdfd9b9cd845018c281b980930fe29",
+            "parent_span_id": "4f8b450ee7314e8695b41cdf27af6741",
+            "name": "document.extract",
+            "status": "completed",
+            "elapsed_ms": 0.30460002017207444,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:10.014387+00:00"
+          },
+          {
+            "span_id": "467b20bd222f464fb35e7d84093fc08f",
+            "parent_span_id": "4f8b450ee7314e8695b41cdf27af6741",
+            "name": "document.chunk",
+            "status": "completed",
+            "elapsed_ms": 0.0281000102404505,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:10.019331+00:00"
+          },
+          {
+            "span_id": "af5cabfca8b94fb7838373e4cbc8ce09",
+            "parent_span_id": "4f8b450ee7314e8695b41cdf27af6741",
+            "name": "document.embed",
+            "status": "completed",
+            "elapsed_ms": 413.8792000012472,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:10.024122+00:00"
+          },
+          {
+            "span_id": "dd224e9692b342cc9747b7f8bca34281",
+            "parent_span_id": "4f8b450ee7314e8695b41cdf27af6741",
+            "name": "document.index",
+            "status": "completed",
+            "elapsed_ms": 20.88150000781752,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:10.443892+00:00"
+          }
+        ]
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--ask",
+      "trace_id": "61d7723d88fc4545b48bd6c4175e3fc6",
+      "response": {
+        "question": "检索验收要求Recall@5至少达到多少？",
+        "status": "answered",
+        "answer": "检索验收要求 Recall@5 不得低于 0.85。",
+        "citations": [
+          {
+            "chunk_id": "0fd37588-8215-5b35-8de1-2a0da2533073",
+            "quote": "检索验收要求：Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。",
+            "document_id": "eab39642358687b5e8f53a2a7f402211b2b3e4ff62c36ecd4207abfbf512a240",
+            "filename": "module03_research_note.md",
+            "page": 1,
+            "start": 228,
+            "end": 268,
+            "score": 0.5982733577436947,
+            "sources": []
+          }
+        ],
+        "reason": null,
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "retrieved_count": 3
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--trace",
+      "trace_id": null,
+      "response": {
+        "trace_id": "61d7723d88fc4545b48bd6c4175e3fc6",
+        "operation": "documents.ask",
+        "status": "completed",
+        "started_at": "2026-10-16T12:20:11.341478+00:00",
+        "finished_at": "2026-10-16T12:20:12.467231+00:00",
+        "elapsed_ms": 1125.753,
+        "http_status": 200,
+        "error_code": null,
+        "spans": [
+          {
+            "span_id": "185b6f4244f74917b286fca66ab5dda7",
+            "parent_span_id": null,
+            "name": "http.request",
+            "status": "completed",
+            "elapsed_ms": 1113.1005999923218,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:11.347524+00:00"
+          },
+          {
+            "span_id": "731f0726b9914d37bc2add84b222d2ee",
+            "parent_span_id": "185b6f4244f74917b286fca66ab5dda7",
+            "name": "document.search",
+            "status": "completed",
+            "elapsed_ms": 16.342899994924664,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:11.348946+00:00"
+          },
+          {
+            "span_id": "a1599d7e2acf4f09ba575411146ac770",
+            "parent_span_id": "731f0726b9914d37bc2add84b222d2ee",
+            "name": "document.embed",
+            "status": "completed",
+            "elapsed_ms": 7.226700021419674,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:11.349858+00:00"
+          },
+          {
+            "span_id": "588b453cbb7647c3a8eeb32024521ce0",
+            "parent_span_id": "185b6f4244f74917b286fca66ab5dda7",
+            "name": "document.answer",
+            "status": "completed",
+            "elapsed_ms": 1076.0638000210747,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:11.371595+00:00"
+          },
+          {
+            "span_id": "65ad96bd088040c0861c4d03efd8165b",
+            "parent_span_id": "185b6f4244f74917b286fca66ab5dda7",
+            "name": "document.validate_citations",
+            "status": "completed",
+            "elapsed_ms": 0.021099986042827368,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:12.454076+00:00"
+          }
+        ]
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--index-file",
+      "trace_id": "b16881dd71bf40a1908791727804f727",
+      "response": {
+        "detail": {
+          "document_id": "90215b5609dff7cf06c7a81a311f9b4f176938799e23c5238cbbc8066215249e",
+          "message": "文件、绑定信息或检索参数不符合要求，请核对后重试。"
+        }
+      },
+      "exit_code": 1
+    },
+    {
+      "name": "--trace",
+      "trace_id": null,
+      "response": {
+        "trace_id": "b16881dd71bf40a1908791727804f727",
+        "operation": "documents.index",
+        "status": "error",
+        "started_at": "2026-10-16T12:20:13.330809+00:00",
+        "finished_at": "2026-10-16T12:20:13.453837+00:00",
+        "elapsed_ms": 123.02799999999999,
+        "http_status": 422,
+        "error_code": "ValueError",
+        "spans": [
+          {
+            "span_id": "7b19729bd0804526b972f8890fc37972",
+            "parent_span_id": null,
+            "name": "http.request",
+            "status": "error",
+            "elapsed_ms": 110.22669999510981,
+            "error_code": "HTTP422",
+            "started_at": "2026-10-16T12:20:13.337428+00:00"
+          },
+          {
+            "span_id": "730dbdde682445bc85302300b236b84d",
+            "parent_span_id": "7b19729bd0804526b972f8890fc37972",
+            "name": "document.receive",
+            "status": "completed",
+            "elapsed_ms": 6.206999998539686,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:13.337716+00:00"
+          },
+          {
+            "span_id": "6316ce74bf3542abbeac66662648b379",
+            "parent_span_id": "7b19729bd0804526b972f8890fc37972",
+            "name": "document.extract",
+            "status": "error",
+            "elapsed_ms": 85.34890000009909,
+            "error_code": "ValueError",
+            "started_at": "2026-10-16T12:20:13.349153+00:00"
+          }
+        ]
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "--trace",
+      "trace_id": null,
+      "response": {
+        "trace_id": "128d2c413c034f9a93a9454cc108f610",
+        "operation": "messages.ingest",
+        "status": "completed",
+        "started_at": "2026-10-16T12:20:04.385092+00:00",
+        "finished_at": "2026-10-16T12:20:07.799381+00:00",
+        "elapsed_ms": 3414.289,
+        "http_status": 200,
+        "error_code": null,
+        "spans": [
+          {
+            "span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "parent_span_id": null,
+            "name": "http.request",
+            "status": "completed",
+            "elapsed_ms": 3402.344100002665,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:04.391061+00:00"
+          },
+          {
+            "span_id": "5e8529f131da4f5f85113214944db259",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.receive",
+            "status": "completed",
+            "elapsed_ms": 6.400799989933148,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:04.391981+00:00"
+          },
+          {
+            "span_id": "79ab65d4265e4c59a4cecd106b97abad",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.analyze",
+            "status": "completed",
+            "elapsed_ms": 1823.980399989523,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:05.938766+00:00"
+          },
+          {
+            "span_id": "99d0ffe400104fed9b65f2bcd7accaa0",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.resolve_times",
+            "status": "completed",
+            "elapsed_ms": 0.5395000043790787,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:07.769564+00:00"
+          },
+          {
+            "span_id": "284c919a82d847969f1ceff3fcad8263",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "message.persist",
+            "status": "completed",
+            "elapsed_ms": 5.795700009912252,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:07.776108+00:00"
+          },
+          {
+            "span_id": "7dcb96e3c5e1452d8f9bd2c9173a414c",
+            "parent_span_id": "eaab97713273488183dfc35fc5f2b28b",
+            "name": "reminder.plan",
+            "status": "completed",
+            "elapsed_ms": 0.919599988264963,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:07.787210+00:00"
+          }
+        ]
+      },
+      "exit_code": 0
+    }
+  ],
+  "assertions": [
+    "new_message_processed_with_response_trace_header",
+    "real_extraction_trace_has_expected_steps",
+    "trace_metadata_excludes_notice_text_and_filenames",
+    "message_steps_share_http_parent",
+    "health_and_trace_reads_do_not_create_extra_records",
+    "duplicate_gets_new_trace_without_model_call",
+    "real_cached_embedding_index_has_trace_steps",
+    "real_rag_answer_and_citation_steps_traced",
+    "failed_pdf_is_located_at_extract_without_model_call",
+    "old_server_port_closed_before_restart",
+    "new_process_restores_same_trace_and_spans",
+    "two_actual_server_processes_verified",
+    "rules_and_real_live_reports_are_distinct",
+    "real_live_all_fixture_checks_passed",
+    "negative_control_returns_exit_one_and_seven_of_eight",
+    "semantic_mismatch_does_not_claim_model_execution_exception",
+    "evaluation_temporary_databases_are_cleaned"
+  ],
+  "evaluation": {
+    "fixture_sha256": "e5c43eed6d4ae6eed963b04568a11a43ebab93cb5ca4b451f3b86333a4f9d503",
+    "rules": {
+      "mode": "rules",
+      "model_evaluation": false,
+      "case_count": 8,
+      "metrics": {
+        "classification_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        },
+        "event_count_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        },
+        "time_field_accuracy": {
+          "passed": 70,
+          "total": 70,
+          "score": 1.0
+        },
+        "attachment_hint_retention": {
+          "passed": 4,
+          "total": 4,
+          "score": 1.0
+        },
+        "attachment_count_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        }
+      },
+      "passed": true
+    },
+    "live": {
+      "mode": "live",
+      "model_evaluation": true,
+      "case_count": 8,
+      "metrics": {
+        "classification_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        },
+        "event_count_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        },
+        "time_field_accuracy": {
+          "passed": 70,
+          "total": 70,
+          "score": 1.0
+        },
+        "attachment_hint_retention": {
+          "passed": 4,
+          "total": 4,
+          "score": 1.0
+        },
+        "attachment_count_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        }
+      },
+      "passed": true
+    },
+    "negative_control": {
+      "exit_code": 1,
+      "metrics": {
+        "classification_accuracy": {
+          "passed": 7,
+          "total": 8,
+          "score": 0.875
+        },
+        "event_count_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        },
+        "time_field_accuracy": {
+          "passed": 70,
+          "total": 70,
+          "score": 1.0
+        },
+        "attachment_hint_retention": {
+          "passed": 4,
+          "total": 4,
+          "score": 1.0
+        },
+        "attachment_count_accuracy": {
+          "passed": 8,
+          "total": 8,
+          "score": 1.0
+        }
+      },
+      "first_case": {
+        "case_id": "eval-001",
+        "passed": false,
+        "checks": [
+          {
+            "metric": "classification_accuracy",
+            "name": "category",
+            "passed": false,
+            "expected": "求职",
+            "actual": "研究"
+          },
+          {
+            "metric": "event_count_accuracy",
+            "name": "event_count",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "metric": "attachment_count_accuracy",
+            "name": "attachment_count",
+            "passed": true,
+            "expected": [
+              2
+            ],
+            "actual": 2
+          },
+          {
+            "metric": "attachment_hint_retention",
+            "name": "attachment[0]",
+            "passed": true,
+            "expected": "参考论文甲.pdf",
+            "actual": "参考论文甲.pdf"
+          },
+          {
+            "metric": "attachment_hint_retention",
+            "name": "attachment[1]",
+            "passed": true,
+            "expected": "参考论文乙.pdf",
+            "actual": "参考论文乙.pdf"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].matched",
+            "passed": true,
+            "expected": "明天下午三点",
+            "actual": "明天下午三点"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].time_text",
+            "passed": true,
+            "expected": "明天下午三点",
+            "actual": "明天下午三点"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].reference_time",
+            "passed": true,
+            "expected": "2026-10-16T10:00:00+08:00",
+            "actual": "2026-10-16T10:00:00+08:00"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].timezone",
+            "passed": true,
+            "expected": "UTC+08:00",
+            "actual": "UTC+08:00"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].precision",
+            "passed": true,
+            "expected": "minute",
+            "actual": "minute"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].status",
+            "passed": true,
+            "expected": "resolved",
+            "actual": "resolved"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].time_kind",
+            "passed": true,
+            "expected": "point",
+            "actual": "point"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].at",
+            "passed": true,
+            "expected": "2026-10-17T15:00:00+08:00",
+            "actual": "2026-10-17T15:00:00+08:00"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].forbid_date",
+            "passed": true,
+            "expected": "absent",
+            "actual": "absent"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].forbid_start_date",
+            "passed": true,
+            "expected": "absent",
+            "actual": "absent"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[0].forbid_end_date",
+            "passed": true,
+            "expected": "absent",
+            "actual": "absent"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].matched",
+            "passed": true,
+            "expected": "周五前",
+            "actual": "周五前"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].time_text",
+            "passed": true,
+            "expected": "周五前",
+            "actual": "周五前"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].reference_time",
+            "passed": true,
+            "expected": "2026-10-16T10:00:00+08:00",
+            "actual": "2026-10-16T10:00:00+08:00"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].timezone",
+            "passed": true,
+            "expected": "UTC+08:00",
+            "actual": "UTC+08:00"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].precision",
+            "passed": true,
+            "expected": "date",
+            "actual": "date"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].status",
+            "passed": true,
+            "expected": "resolved",
+            "actual": "resolved"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].time_kind",
+            "passed": true,
+            "expected": "deadline",
+            "actual": "deadline"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].date",
+            "passed": true,
+            "expected": "2026-10-16",
+            "actual": "2026-10-16"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].forbid_at",
+            "passed": true,
+            "expected": "absent",
+            "actual": "absent"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].forbid_start_date",
+            "passed": true,
+            "expected": "absent",
+            "actual": "absent"
+          },
+          {
+            "metric": "time_field_accuracy",
+            "name": "event[1].forbid_end_date",
+            "passed": true,
+            "expected": "absent",
+            "actual": "absent"
+          }
+        ],
+        "trace_id": "98b790498a864046af00793d394d13cb",
+        "error_code": null,
+        "actual": {
+          "category": "研究",
+          "event_count": 2,
+          "attachment_count": 2,
+          "events": [
+            {
+              "time_text": "明天下午三点",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "time_text": "周五前",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ]
+        }
+      },
+      "trace": {
+        "trace_id": "98b790498a864046af00793d394d13cb",
+        "operation": "evaluation.run",
+        "status": "error",
+        "started_at": "2026-10-16T12:20:21.506548+00:00",
+        "finished_at": "2026-10-16T12:20:21.563690+00:00",
+        "elapsed_ms": 57.141999999999996,
+        "http_status": null,
+        "error_code": "EvaluationAssertionError",
+        "spans": [
+          {
+            "span_id": "fdd9552e469b4db7b8b10f703915455b",
+            "parent_span_id": null,
+            "name": "evaluation.run",
+            "status": "error",
+            "elapsed_ms": 47.389999992446974,
+            "error_code": "EvaluationAssertionError",
+            "started_at": "2026-10-16T12:20:21.511576+00:00"
+          },
+          {
+            "span_id": "cedae9c0b3074f908f563445af74e926",
+            "parent_span_id": "fdd9552e469b4db7b8b10f703915455b",
+            "name": "message.receive",
+            "status": "completed",
+            "elapsed_ms": 6.374500022502616,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:21.511609+00:00"
+          },
+          {
+            "span_id": "d388af90d4f14fd486d19d0532030b0f",
+            "parent_span_id": "fdd9552e469b4db7b8b10f703915455b",
+            "name": "message.analyze",
+            "status": "completed",
+            "elapsed_ms": 6.166599981952459,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:21.527463+00:00"
+          },
+          {
+            "span_id": "df7d2fa9ea9f4dd984f1d799beeb65b5",
+            "parent_span_id": "fdd9552e469b4db7b8b10f703915455b",
+            "name": "message.resolve_times",
+            "status": "completed",
+            "elapsed_ms": 0.540599983651191,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:21.539837+00:00"
+          },
+          {
+            "span_id": "4ba7fcf54f0d48cb8045ef22c206e1f6",
+            "parent_span_id": "fdd9552e469b4db7b8b10f703915455b",
+            "name": "message.persist",
+            "status": "completed",
+            "elapsed_ms": 6.25390000641346,
+            "error_code": null,
+            "started_at": "2026-10-16T12:20:21.547137+00:00"
+          }
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "8 synthetic live cases are not production accuracy",
+    "Trace is local teaching implementation, not connected OTEL or LangSmith",
+    "background polling has no independent Trace scope in this module",
+    "QQ account remains unconfigured"
+  ],
+  "temporary_stores_cleaned": true
+}

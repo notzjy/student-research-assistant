@@ -1,0 +1,392 @@
+{
+  "verified_at": "2026-10-16T21:11:52.669673+08:00",
+  "scope": "synthetic fixed-clock rule regression plus actual DeepSeek evaluation of ten synthetic messages",
+  "checks": {
+    "old_relative_time_keeps_original_2021_reference": true,
+    "date_precision_does_not_gain_at": true,
+    "new_automatic_old_message_skipped": true,
+    "existing_automatic_notification_suppressed": true,
+    "source_expired_job_cancelled_with_reason": true,
+    "explicit_manual_submission_preserved": true,
+    "demo_uses_only_recording_notifier": true,
+    "demo_temporary_database_cleaned": true,
+    "rules_ten_cases_passed_not_model_evidence": true,
+    "live_ten_cases_passed": true,
+    "future_renewal_notice_does_not_create_task": true,
+    "explicit_cancel_renewal_action_not_keyword_blocked": true
+  },
+  "full_regression": {
+    "root_tests": 125,
+    "lesson_tests": 73,
+    "total": 198,
+    "passed": true
+  },
+  "demo": {
+    "mode": "offline_rule_regression",
+    "uses_real_mail_or_model": false,
+    "now": "2026-10-16T20:00:00+08:00",
+    "source_event_time": {
+      "date": "2021-10-09",
+      "precision": "date",
+      "reference_time": "2021-10-05T10:00:00+08:00",
+      "status": "resolved",
+      "time_kind": "point",
+      "time_text": "4天后",
+      "timezone": "UTC+08:00"
+    },
+    "new_automatic_plan": {
+      "enabled": true,
+      "planned": [],
+      "skipped": [
+        {
+          "task_id": "3b7c29e0ddefe109",
+          "reason": "source_event_expired"
+        }
+      ]
+    },
+    "existing_automatic_delivery": {
+      "claimed": 1,
+      "submitted": 0,
+      "failed": 0,
+      "stale": 0,
+      "suppressed": 1
+    },
+    "suppressed_reminder": {
+      "reminder_id": "8fe0bed86954933480c40ef0",
+      "task_id": "3b7c29e0ddefe109",
+      "version": 1,
+      "title": "示例会员自动续费",
+      "remind_at": "2021-10-09T09:00:00+08:00",
+      "channel": "console",
+      "origin": "automatic",
+      "status": "cancelled",
+      "attempts": 1,
+      "next_attempt_at": "2021-10-09T01:00:00.000000+00:00",
+      "lease_until": null,
+      "error_code": "SourceEventExpired",
+      "submitted_at": null
+    },
+    "explicit_manual_delivery": {
+      "claimed": 1,
+      "submitted": 1,
+      "failed": 0,
+      "stale": 0,
+      "suppressed": 0
+    },
+    "manual_reminder": {
+      "reminder_id": "a8b2251d072b165638e264f1",
+      "task_id": "3b7c29e0ddefe109",
+      "version": 1,
+      "title": "示例会员自动续费",
+      "remind_at": "2026-10-16T19:59:00+08:00",
+      "channel": "console",
+      "origin": "manual",
+      "status": "submitted",
+      "attempts": 1,
+      "next_attempt_at": "2026-10-16T11:59:00.000000+00:00",
+      "lease_until": null,
+      "error_code": null,
+      "submitted_at": "2026-10-16T12:00:00.000000+00:00"
+    },
+    "simulated_notification_count": 1,
+    "trace": {
+      "trace_id": "86155b530e2341b39759eb1ae404dc3d",
+      "operation": "messages.ingest",
+      "status": "completed",
+      "started_at": "2026-10-16T13:09:10.437564+00:00",
+      "finished_at": "2026-10-16T13:09:11.088320+00:00",
+      "elapsed_ms": 650.756,
+      "http_status": null,
+      "error_code": null,
+      "spans": [
+        {
+          "span_id": "f2968131ff2749ab9ac1b3748356edc9",
+          "parent_span_id": null,
+          "name": "message.receive",
+          "status": "completed",
+          "elapsed_ms": 79.66580000356771,
+          "error_code": null,
+          "started_at": "2026-10-16T13:09:10.475099+00:00"
+        },
+        {
+          "span_id": "5ffd154da5114077a7895af4e58fde2f",
+          "parent_span_id": null,
+          "name": "message.analyze",
+          "status": "completed",
+          "elapsed_ms": 4.463899997062981,
+          "error_code": null,
+          "started_at": "2026-10-16T13:09:10.676259+00:00"
+        },
+        {
+          "span_id": "3fde9f184d45418cafe24f205c7d3fa6",
+          "parent_span_id": null,
+          "name": "message.resolve_times",
+          "status": "completed",
+          "elapsed_ms": 0.4667000030167401,
+          "error_code": null,
+          "started_at": "2026-10-16T13:09:10.758301+00:00"
+        },
+        {
+          "span_id": "6ac330d4be8142a5880eba271f00a4b3",
+          "parent_span_id": null,
+          "name": "message.persist",
+          "status": "completed",
+          "elapsed_ms": 81.56990000861697,
+          "error_code": null,
+          "started_at": "2026-10-16T13:09:10.836243+00:00"
+        },
+        {
+          "span_id": "11ac1c8850734cb097441c5b92c2defc",
+          "parent_span_id": null,
+          "name": "reminder.plan",
+          "status": "completed",
+          "elapsed_ms": 0.8893999911379069,
+          "error_code": null,
+          "started_at": "2026-10-16T13:09:11.005630+00:00"
+        }
+      ]
+    },
+    "temporary_database_cleaned": true
+  },
+  "fixture_sha256": "1d0461fe306d8848b9b95f4f78f9298c5238c9936621a298331325ff0eba5535",
+  "rules": {
+    "mode": "rules",
+    "model_evaluation": false,
+    "case_count": 10,
+    "metrics": {
+      "classification_accuracy": {
+        "passed": 10,
+        "total": 10,
+        "score": 1.0
+      },
+      "event_count_accuracy": {
+        "passed": 10,
+        "total": 10,
+        "score": 1.0
+      },
+      "time_field_accuracy": {
+        "passed": 81,
+        "total": 81,
+        "score": 1.0
+      },
+      "attachment_hint_retention": {
+        "passed": 4,
+        "total": 4,
+        "score": 1.0
+      },
+      "attachment_count_accuracy": {
+        "passed": 10,
+        "total": 10,
+        "score": 1.0
+      }
+    },
+    "passed": true
+  },
+  "live": {
+    "mode": "live",
+    "model_evaluation": true,
+    "case_count": 10,
+    "metrics": {
+      "classification_accuracy": {
+        "passed": 10,
+        "total": 10,
+        "score": 1.0
+      },
+      "event_count_accuracy": {
+        "passed": 10,
+        "total": 10,
+        "score": 1.0
+      },
+      "time_field_accuracy": {
+        "passed": 81,
+        "total": 81,
+        "score": 1.0
+      },
+      "attachment_hint_retention": {
+        "passed": 4,
+        "total": 4,
+        "score": 1.0
+      },
+      "attachment_count_accuracy": {
+        "passed": 10,
+        "total": 10,
+        "score": 1.0
+      }
+    },
+    "passed": true
+  },
+  "live_new_semantic_cases": [
+    {
+      "case_id": "eval-009",
+      "passed": true,
+      "checks": [
+        {
+          "metric": "classification_accuracy",
+          "name": "category",
+          "passed": true,
+          "expected": "其他",
+          "actual": "其他"
+        },
+        {
+          "metric": "event_count_accuracy",
+          "name": "event_count",
+          "passed": true,
+          "expected": 0,
+          "actual": 0
+        },
+        {
+          "metric": "attachment_count_accuracy",
+          "name": "attachment_count",
+          "passed": true,
+          "expected": [
+            0,
+            null
+          ],
+          "actual": null
+        }
+      ],
+      "trace_id": "e613c3980ed54d26aa7fa565a8441eb0",
+      "error_code": null,
+      "actual": {
+        "category": "其他",
+        "event_count": 0,
+        "attachment_count": null,
+        "events": []
+      }
+    },
+    {
+      "case_id": "eval-010",
+      "passed": true,
+      "checks": [
+        {
+          "metric": "classification_accuracy",
+          "name": "category",
+          "passed": true,
+          "expected": "其他",
+          "actual": "其他"
+        },
+        {
+          "metric": "event_count_accuracy",
+          "name": "event_count",
+          "passed": true,
+          "expected": 1,
+          "actual": 1
+        },
+        {
+          "metric": "attachment_count_accuracy",
+          "name": "attachment_count",
+          "passed": true,
+          "expected": [
+            0,
+            null
+          ],
+          "actual": null
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].matched",
+          "passed": true,
+          "expected": "明天下午三点前",
+          "actual": "明天下午三点前"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].time_text",
+          "passed": true,
+          "expected": "明天下午三点前",
+          "actual": "明天下午三点前"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].reference_time",
+          "passed": true,
+          "expected": "2026-10-16T10:00:00+08:00",
+          "actual": "2026-10-16T10:00:00+08:00"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].timezone",
+          "passed": true,
+          "expected": "UTC+08:00",
+          "actual": "UTC+08:00"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].precision",
+          "passed": true,
+          "expected": "minute",
+          "actual": "minute"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].status",
+          "passed": true,
+          "expected": "resolved",
+          "actual": "resolved"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].time_kind",
+          "passed": true,
+          "expected": "deadline",
+          "actual": "deadline"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].at",
+          "passed": true,
+          "expected": "2026-10-17T15:00:00+08:00",
+          "actual": "2026-10-17T15:00:00+08:00"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].forbid_date",
+          "passed": true,
+          "expected": "absent",
+          "actual": "absent"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].forbid_start_date",
+          "passed": true,
+          "expected": "absent",
+          "actual": "absent"
+        },
+        {
+          "metric": "time_field_accuracy",
+          "name": "event[0].forbid_end_date",
+          "passed": true,
+          "expected": "absent",
+          "actual": "absent"
+        }
+      ],
+      "trace_id": "02b5fa79baac44cab02e23228f1b094c",
+      "error_code": null,
+      "actual": {
+        "category": "其他",
+        "event_count": 1,
+        "attachment_count": null,
+        "events": [
+          {
+            "time_text": "明天下午三点前",
+            "time": {
+              "at": "2026-10-17T15:00:00+08:00",
+              "precision": "minute",
+              "reference_time": "2026-10-16T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "deadline",
+              "time_text": "明天下午三点前",
+              "timezone": "UTC+08:00"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "No real inbox connection, original email access, or OS notifications in this repair validation.",
+    "User business database and .env were not modified by this repair run; schema origin migration applies on next service initialization.",
+    "Prompt semantic rule is not a universal guarantee; date-expiration gating is deterministic.",
+    "Two early store-test temporary directories remain because automatic review rejected cleanup; demonstration and evaluation temporary databases were cleaned."
+  ]
+}

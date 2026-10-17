@@ -1,0 +1,146 @@
+{
+  "verified_at": "2026-10-16T00:16:22+08:00",
+  "kind": "real TCP HTTP + DeepSeek + LangGraph + list_tasks/complete_task + SQLite; synthetic tasks",
+  "tasks_before": [
+    {
+      "id": "ae0ab0d027807b8f",
+      "title": "[第九课教学示例] 阅读工具调用说明",
+      "time_text": null,
+      "location": null,
+      "status": "pending"
+    },
+    {
+      "id": "e0481cbdc2ad278d",
+      "title": "[第九课教学示例] 整理研究笔记",
+      "time_text": null,
+      "location": null,
+      "status": "pending"
+    }
+  ],
+  "requests": [
+    {
+      "request": {
+        "text": "[第九课教学示例] 阅读工具调用说明已经做完了，请把这项待办标记为完成。"
+      },
+      "response": {
+        "execution_status": "completed",
+        "reply": "已把「[第九课教学示例] 阅读工具调用说明」标记为已完成。\n\n另一项「[第九课教学示例] 整理研究笔记」仍未完成；这两项都没有记录时间（原通知中未提到）和地点。",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks",
+          "complete_task"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "all",
+            "count": 2,
+            "tasks": [
+              {
+                "id": "ae0ab0d027807b8f",
+                "title": "[第九课教学示例] 阅读工具调用说明",
+                "time_text": null,
+                "location": null,
+                "status": "pending"
+              },
+              {
+                "id": "e0481cbdc2ad278d",
+                "title": "[第九课教学示例] 整理研究笔记",
+                "time_text": null,
+                "location": null,
+                "status": "pending"
+              }
+            ]
+          },
+          {
+            "status": "completed",
+            "task": {
+              "id": "ae0ab0d027807b8f",
+              "title": "[第九课教学示例] 阅读工具调用说明",
+              "time_text": null,
+              "location": null,
+              "status": "completed"
+            },
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "text": "[第九课教学示例] 阅读工具调用说明已经做完了，请把这项待办标记为完成。"
+      },
+      "response": {
+        "execution_status": "completed",
+        "reply": "查询到的事项“[第九课教学示例] 阅读工具调用说明”已经是完成状态，无需再次操作，因此未调用完成工具。\n\n另外，仍有一项未完成待办：**[第九课教学示例] 整理研究笔记**（无时间、无地点说明）——如需标记完成请告诉我。",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "all",
+            "count": 2,
+            "tasks": [
+              {
+                "id": "ae0ab0d027807b8f",
+                "title": "[第九课教学示例] 阅读工具调用说明",
+                "time_text": null,
+                "location": null,
+                "status": "completed"
+              },
+              {
+                "id": "e0481cbdc2ad278d",
+                "title": "[第九课教学示例] 整理研究笔记",
+                "time_text": null,
+                "location": null,
+                "status": "pending"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "tasks_after": [
+    {
+      "id": "ae0ab0d027807b8f",
+      "title": "[第九课教学示例] 阅读工具调用说明",
+      "time_text": null,
+      "location": null,
+      "status": "completed"
+    },
+    {
+      "id": "e0481cbdc2ad278d",
+      "title": "[第九课教学示例] 整理研究笔记",
+      "time_text": null,
+      "location": null,
+      "status": "pending"
+    }
+  ],
+  "checks": {
+    "only_target_completed": true,
+    "other_task_unchanged": true,
+    "repeat_request_kept_state": true,
+    "pending_routes_match_database": true
+  },
+  "offline_tests_passed": {
+    "lesson09": 8,
+    "previous_lessons": 44,
+    "total": 52
+  }
+}

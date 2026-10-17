@@ -1,0 +1,346 @@
+{
+  "verified_at": "2026-10-16T13:52:46.008990+08:00",
+  "mode": "real TCP + real configured DeepSeek API; synthetic messages; temporary databases",
+  "checks": [
+    {
+      "name": "profile",
+      "http_status": 200,
+      "response": {
+        "profile": "student",
+        "default_agent": "student-assistant",
+        "agents": [
+          {
+            "key": "student-assistant",
+            "description": "支持工具调用和持久线程的个人助理"
+          }
+        ],
+        "capabilities": [
+          "tool_calling",
+          "time_interpretation",
+          "sqlite_checkpoint",
+          "thread_history",
+          "explicit_resume"
+        ]
+      }
+    },
+    {
+      "name": "remember_name",
+      "http_status": 200,
+      "response": {
+        "thread_id": "memory-demo",
+        "turn_id": "7c4bce7b-2d3e-42f5-8322-2d4c1955a927",
+        "reply": "好的，已记住：本项目代号为「星河计划」。不新增待办。",
+        "execution_status": "no_tools",
+        "node_order": [
+          "model"
+        ],
+        "tool_names": [],
+        "tool_results": [],
+        "history_count": 2
+      }
+    },
+    {
+      "name": "recall_after_process_restart",
+      "http_status": 200,
+      "response": {
+        "thread_id": "memory-demo",
+        "turn_id": "2ee827f5-7a71-4940-b72d-c205804aa246",
+        "reply": "你给的代号是「星河计划」。",
+        "execution_status": "no_tools",
+        "node_order": [
+          "model"
+        ],
+        "tool_names": [],
+        "tool_results": [],
+        "history_count": 4
+      }
+    },
+    {
+      "name": "other_thread_has_no_name",
+      "http_status": 200,
+      "response": {
+        "thread_id": "isolated-demo",
+        "turn_id": "43b91dcf-96f9-4419-8b29-0085e31048d8",
+        "reply": "你还没有在这条对话里告诉我项目代号。之前若有提到，请把那条消息发我，我按原文确认。",
+        "execution_status": "no_tools",
+        "node_order": [
+          "model"
+        ],
+        "tool_names": [],
+        "tool_results": [],
+        "history_count": 2
+      }
+    },
+    {
+      "name": "history_has_original_messages",
+      "http_status": 200,
+      "response": {
+        "thread_id": "memory-demo",
+        "messages": [
+          {
+            "role": "human",
+            "content": "请记住我这个研究项目的代号是星河计划。只确认这个称呼，不要新增待办。",
+            "id": "7c4bce7b-2d3e-42f5-8322-2d4c1955a927"
+          },
+          {
+            "role": "ai",
+            "content": "好的，已记住：本项目代号为「星河计划」。不新增待办。",
+            "id": "lc_run--01a14345-307d-7461-8a9f-0b47bad0f02e-0"
+          },
+          {
+            "role": "human",
+            "content": "我刚才给这个研究项目起的代号是什么？",
+            "id": "2ee827f5-7a71-4940-b72d-c205804aa246"
+          },
+          {
+            "role": "ai",
+            "content": "你给的代号是「星河计划」。",
+            "id": "lc_run--01a14345-42a8-7873-aa89-9c34ff7d7a9e-0"
+          }
+        ],
+        "pending": false,
+        "next_nodes": []
+      }
+    },
+    {
+      "name": "save_task",
+      "http_status": 200,
+      "response": {
+        "thread_id": "tasks-demo",
+        "turn_id": "4841ad39-13c5-40db-b3fe-04f80628fef1",
+        "reply": "已保存待办：交综述，时间「周五前」，地点实验楼302（ID：6c8e5fc1b89f8951，未完成）。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "save_task"
+        ],
+        "tool_results": [
+          {
+            "status": "created",
+            "task": {
+              "id": "6c8e5fc1b89f8951",
+              "title": "交综述",
+              "time_text": "周五前",
+              "location": "实验楼302",
+              "status": "pending"
+            }
+          }
+        ],
+        "history_count": 4
+      }
+    },
+    {
+      "name": "business_has_task",
+      "http_status": 200,
+      "response": {
+        "count": 1,
+        "tasks": [
+          {
+            "id": "6c8e5fc1b89f8951",
+            "title": "交综述",
+            "time_text": "周五前",
+            "location": "实验楼302",
+            "status": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "name": "query_from_other_thread",
+      "http_status": 200,
+      "response": {
+        "thread_id": "tasks-other",
+        "turn_id": "0f11cfab-d4e6-459a-acf7-060f1019f3a9",
+        "reply": "你还有 1 项未完成：\n\n- 交综述（时间：周五前，地点：实验楼302）",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "pending",
+            "count": 1,
+            "tasks": [
+              {
+                "id": "6c8e5fc1b89f8951",
+                "title": "交综述",
+                "time_text": "周五前",
+                "location": "实验楼302",
+                "status": "pending"
+              }
+            ]
+          }
+        ],
+        "history_count": 4
+      }
+    },
+    {
+      "name": "query_then_complete",
+      "http_status": 200,
+      "response": {
+        "thread_id": "tasks-demo",
+        "turn_id": "b349d369-30b2-4629-b00d-3acee132f0f4",
+        "reply": "已查询全部待办，共1项：「交综述」（周五前，实验楼302）。现已标记为完成。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks",
+          "complete_task"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "all",
+            "count": 1,
+            "tasks": [
+              {
+                "id": "6c8e5fc1b89f8951",
+                "title": "交综述",
+                "time_text": "周五前",
+                "location": "实验楼302",
+                "status": "pending"
+              }
+            ]
+          },
+          {
+            "status": "completed",
+            "task": {
+              "id": "6c8e5fc1b89f8951",
+              "title": "交综述",
+              "time_text": "周五前",
+              "location": "实验楼302",
+              "status": "completed"
+            }
+          }
+        ],
+        "history_count": 10
+      }
+    },
+    {
+      "name": "pending_is_zero",
+      "http_status": 200,
+      "response": {
+        "count": 0
+      }
+    },
+    {
+      "name": "source_anchored_weekday",
+      "http_status": 200,
+      "response": {
+        "thread_id": "time-demo",
+        "turn_id": "9aec98ca-c7dd-4fc4-9030-e2ca89384064",
+        "reply": "原消息（2026-10-16，周五）中的\"周三\"指 **2026-10-14**（本周三），未保存。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "interpret_time"
+        ],
+        "tool_results": [
+          {
+            "status": "interpreted",
+            "result": {
+              "time_text": "周三",
+              "reference_time": "2026-10-16T20:00:00+08:00",
+              "timezone": "UTC+08:00",
+              "precision": "date",
+              "status": "resolved",
+              "time_kind": "point",
+              "date": "2026-10-14"
+            }
+          }
+        ],
+        "history_count": 4
+      }
+    },
+    {
+      "name": "notice_keeps_two_papers",
+      "http_status": 200,
+      "response": {
+        "thread_id": "notice-demo",
+        "turn_id": "a8b15606-496e-459b-a80e-fdeee6456c56",
+        "reply": "已分析完成（未保存待办）：\n\n- **类别**：研究\n- **摘要**：明天下午三点在实验楼302开组会，周五前交综述，附件是两篇参考论文。\n- **事项**：\n  1. 开组会 — 明天下午三点，实验楼302\n  2. 交综述 — 周五前，无地点\n- **附件**：两篇参考论文（2个）\n\n仅做本地分析，未下载文件，也未设置提醒。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "analyze_notice"
+        ],
+        "tool_results": [
+          {
+            "status": "analyzed",
+            "analysis": {
+              "category": "研究",
+              "summary": "明天下午三点在实验楼302开组会，周五前交综述，附件是两篇参考论文。",
+              "events": [
+                {
+                  "title": "开组会",
+                  "time_text": "明天下午三点",
+                  "location": "实验楼302"
+                },
+                {
+                  "title": "交综述",
+                  "time_text": "周五前",
+                  "location": null
+                }
+              ],
+              "attachment_description": "两篇参考论文",
+              "attachment_count": 2
+            }
+          }
+        ],
+        "history_count": 4
+      }
+    }
+  ],
+  "assertions": {
+    "different_process_after_restart": true,
+    "memory_restored_after_process_restart": true,
+    "thread_history_isolated": true,
+    "business_store_shared_across_threads": true,
+    "save_query_complete_integrated": true,
+    "response_tools_only_current_turn": true,
+    "weekday_uses_source_week_and_date_has_no_at": true,
+    "two_papers_preserved_in_analysis": true,
+    "verification_processes_stopped_and_temp_files_removed": true
+  },
+  "passed": true,
+  "restart_evidence": {
+    "server_process_before": 24116,
+    "server_process_after": 30264,
+    "same_checkpoint_file": true,
+    "same_thread_id": "memory-demo",
+    "source": "Uvicorn startup log and /threads/memory-demo history after second startup"
+  },
+  "verification_notes": [
+    "验证完成后的首次临时文件清理遇到 Windows 短暂文件占用；进程退出后只重试文件清理，已全部移除。未重跑模型请求或改写验证响应。"
+  ]
+}

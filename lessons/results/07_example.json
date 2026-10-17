@@ -1,0 +1,74 @@
+{
+  "kind": "real local TCP HTTP + DeepSeek + LangGraph + SQLite; synthetic notice",
+  "request": {
+    "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+  },
+  "response": {
+    "execution_status": "completed",
+    "reply": "已保存 2 项待办：\n\n1. **开组会** — 明天下午三点，实验楼302\n2. **交综述** — 周五前（未说明地点）\n\n附件里的两篇参考论文仅是收悉，未单独生成待办。另外，\"周五前\"的具体截止时刻不明确，如有需要可再确认。",
+    "node_order": [
+      "model",
+      "tools",
+      "report",
+      "model"
+    ],
+    "tool_results": [
+      {
+        "status": "created",
+        "task": {
+          "id": "51806c51c5b85ff4",
+          "title": "开组会",
+          "time_text": "明天下午三点",
+          "location": "实验楼302",
+          "status": "pending"
+        },
+        "error": null
+      },
+      {
+        "status": "created",
+        "task": {
+          "id": "c196e667f980cc65",
+          "title": "交综述",
+          "time_text": "周五前",
+          "location": null,
+          "status": "pending"
+        },
+        "error": null
+      }
+    ]
+  },
+  "tasks_after_request": {
+    "count": 2,
+    "tasks": [
+      {
+        "id": "51806c51c5b85ff4",
+        "title": "开组会",
+        "time_text": "明天下午三点",
+        "location": "实验楼302",
+        "status": "pending"
+      },
+      {
+        "id": "c196e667f980cc65",
+        "title": "交综述",
+        "time_text": "周五前",
+        "location": null,
+        "status": "pending"
+      }
+    ]
+  },
+  "total_count": {
+    "count": 2
+  },
+  "pending_before_completion": {
+    "count": 2
+  },
+  "pending_after_separate_cli_completion": {
+    "count": 1
+  },
+  "blank_input_status": 422,
+  "offline_regression_tests_passed": 36,
+  "checks": {
+    "reopened_records_preserved": true,
+    "legacy_json_unchanged": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "source": "manual",
+  "account_id": "demo",
+  "source_message_id": "module05-trace-001",
+  "sender_id": "demo-teacher-001",
+  "sender_name": "示例老师",
+  "sent_at": "2026-10-16T10:00:00+08:00",
+  "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。",
+  "attachments": [
+    {"filename": "reference-a.pdf", "availability": "mentioned"},
+    {"filename": "reference-b.pdf", "availability": "mentioned"}
+  ]
+}

@@ -1,0 +1,71 @@
+# 本机暂无Docker CLI，以下配置已交付但镜像构建与容器运行尚待验证。
+name: student-assistant
+
+services:
+  backend:
+    image: student-assistant:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    # 凭证只在运行时注入后端，不复制进镜像或传给界面。
+    env_file:
+      - .env
+    environment:
+      QQ_MAIL_ENABLED: "false"
+      STUDENT_ASSISTANT_TRUST_CONTAINER_NETWORK: "true"
+      STUDENT_ASSISTANT_EMBEDDING_CACHE: /data/embedding_cache
+    command:
+      - python
+      - run_assistant.py
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8002"
+      - --db
+      - /data/assistant.sqlite3
+      - --checkpoints
+      - /data/assistant_checkpoints.sqlite3
+    ports:
+      - "127.0.0.1:8002:8002"
+    volumes:
+      - assistant-data:/data
+    # 先等待存活接口可访问；模型可用性与邮件账号不属于此健康检查。
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8002/health', timeout=3).close()"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
+    stop_grace_period: 120s
+
+  ui:
+    image: student-assistant:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    # 容器内部通过服务名寻址，浏览器仍访问本机8501端口。
+    environment:
+      ASSISTANT_API_URL: http://backend:8002
+    command:
+      - python
+      - -m
+      - streamlit
+      - run
+      - assistant_dashboard.py
+      - --server.address
+      - 0.0.0.0
+      - --server.port
+      - "8501"
+      - --browser.gatherUsageStats
+      - "false"
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  # 双SQLite、原件、Qdrant索引与Embedding缓存均由后端保存在该卷。
+  assistant-data:

@@ -1,0 +1,40 @@
+{
+  "request": {
+    "text": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。"
+  },
+  "status_code": 200,
+  "response": {
+    "execution_status": "completed",
+    "reply": "两项待办均已存在，未重复保存：\n\n1. **开组会** — 明天下午三点，实验楼302\n2. **交综述** — 周五前，地点未说明\n\n附件中的两篇参考论文仅作参考资料，未单独生成待办。\n\n仍不明确的信息：交综述的提交方式（线上提交还是交到某处）、提交给谁，通知里都没说，需要你自己确认。",
+    "node_order": [
+      "model",
+      "tools",
+      "report",
+      "model"
+    ],
+    "tool_results": [
+      {
+        "status": "exists",
+        "task": {
+          "id": "51806c51c5b85ff4",
+          "title": "开组会",
+          "time_text": "明天下午三点",
+          "location": "实验楼302",
+          "status": "pending"
+        },
+        "error": null
+      },
+      {
+        "status": "exists",
+        "task": {
+          "id": "c196e667f980cc65",
+          "title": "交综述",
+          "time_text": "周五前",
+          "location": null,
+          "status": "pending"
+        },
+        "error": null
+      }
+    ]
+  }
+}

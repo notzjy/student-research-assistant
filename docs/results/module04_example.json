@@ -1,0 +1,511 @@
+{
+  "verified_at": "2026-10-16T15:46:05.024273+08:00",
+  "mode": "real CLI/TCP + real DeepSeek extraction + SQLite persistence + actual Windows API submission + process restart; synthetic notice",
+  "process_ids": [
+    29732,
+    11936
+  ],
+  "actual_server_process_ids": [
+    "30512",
+    "2016"
+  ],
+  "checks": [
+    {
+      "name": "--reminder-policy",
+      "transport": "real CLI/TCP",
+      "response": {
+        "enabled": true,
+        "lead_minutes": 30,
+        "date_only_time": "09:00",
+        "channel": "console"
+      }
+    },
+    {
+      "name": "--ingest",
+      "transport": "real CLI/TCP",
+      "response": {
+        "status": "processed",
+        "message": {
+          "message_id": "d7d37481e36ba0c9e74b693d",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module04-acceptance",
+            "text": "明天下午三点在实验楼302检查Windows教学提醒；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "附件是两篇参考论文（reference-a.pdf、reference-b.pdf）",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302检查Windows教学提醒；",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "检查Windows教学提醒"
+              },
+              {
+                "evidence": "周五前交综述，附件是两篇参考论文。",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302检查Windows教学提醒，并要求周五前交综述；附件为两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+          },
+          "events": [
+            {
+              "task_id": "747cea1da951be66",
+              "title": "检查Windows教学提醒",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302检查Windows教学提醒；",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "d8415ed26bff6695",
+              "title": "交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "pending",
+              "evidence": "周五前交综述，附件是两篇参考论文。",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": null,
+          "priority": "normal"
+        },
+        "reminder_planning": {
+          "enabled": true,
+          "planned": [
+            {
+              "reminder_id": "9c963ae7625a23a47f96ba9c",
+              "task_id": "747cea1da951be66",
+              "version": 1,
+              "title": "检查Windows教学提醒",
+              "remind_at": "2026-10-17T14:30:00+08:00",
+              "channel": "console",
+              "status": "pending",
+              "attempts": 0,
+              "next_attempt_at": "2026-10-17T06:30:00.000000+00:00",
+              "lease_until": null,
+              "error_code": null,
+              "submitted_at": null
+            },
+            {
+              "reminder_id": "96540934e495a91afdd82fc6",
+              "task_id": "d8415ed26bff6695",
+              "version": 1,
+              "title": "交综述",
+              "remind_at": "2026-10-16T09:00:00+08:00",
+              "channel": "console",
+              "status": "pending",
+              "attempts": 0,
+              "next_attempt_at": "2026-10-16T01:00:00.000000+00:00",
+              "lease_until": null,
+              "error_code": null,
+              "submitted_at": null
+            }
+          ],
+          "skipped": []
+        }
+      }
+    },
+    {
+      "name": "--remind",
+      "transport": "real CLI/TCP",
+      "response": {
+        "reminder_id": "5461b1d7f1a610726ded33df",
+        "task_id": "747cea1da951be66",
+        "version": 1,
+        "title": "检查Windows教学提醒",
+        "remind_at": "2026-10-16T07:45:46.780141+00:00",
+        "channel": "windows",
+        "status": "pending",
+        "attempts": 0,
+        "next_attempt_at": "2026-10-16T07:45:46.780141+00:00",
+        "lease_until": null,
+        "error_code": null,
+        "submitted_at": null
+      }
+    },
+    {
+      "name": "actual_windows_system_call",
+      "response": {
+        "reminder_id": "5461b1d7f1a610726ded33df",
+        "task_id": "747cea1da951be66",
+        "version": 1,
+        "title": "检查Windows教学提醒",
+        "remind_at": "2026-10-16T07:45:46.780141+00:00",
+        "channel": "windows",
+        "status": "submitted",
+        "attempts": 1,
+        "next_attempt_at": "2026-10-16T07:45:46.780141+00:00",
+        "lease_until": null,
+        "error_code": null,
+        "submitted_at": "2026-10-16T07:45:52.692921+00:00"
+      }
+    },
+    {
+      "name": "--mail-status",
+      "transport": "real CLI/TCP",
+      "response": {
+        "enabled": false,
+        "configured": false,
+        "running": false,
+        "poll_seconds": 60,
+        "last_error": null,
+        "last_result": null
+      }
+    },
+    {
+      "name": "--sync-mail",
+      "transport": "real CLI/TCP",
+      "response": {
+        "detail": {
+          "message": "QQ邮箱尚未配置，请在本机运行configure_mail.py。"
+        }
+      }
+    },
+    {
+      "name": "--mail-jobs",
+      "transport": "real CLI/TCP",
+      "response": {
+        "count": 0,
+        "jobs": []
+      }
+    },
+    {
+      "name": "--ingest",
+      "transport": "real CLI/TCP",
+      "response": {
+        "status": "exists",
+        "message": {
+          "message_id": "d7d37481e36ba0c9e74b693d",
+          "source_message": {
+            "account_id": "demo",
+            "attachments": [
+              {
+                "availability": "mentioned",
+                "filename": "reference-a.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              },
+              {
+                "availability": "mentioned",
+                "filename": "reference-b.pdf",
+                "media_type": null,
+                "source_attachment_id": null
+              }
+            ],
+            "sender_id": "demo-teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-16T10:00:00+08:00",
+            "source": "manual",
+            "source_message_id": "module04-acceptance",
+            "text": "明天下午三点在实验楼302检查Windows教学提醒；周五前交综述，附件是两篇参考论文。"
+          },
+          "processing_status": "completed",
+          "error_code": null,
+          "analysis": {
+            "attachment_count": 2,
+            "attachment_description": "附件是两篇参考论文（reference-a.pdf、reference-b.pdf）",
+            "category": "研究",
+            "events": [
+              {
+                "evidence": "明天下午三点在实验楼302检查Windows教学提醒；",
+                "location": "实验楼302",
+                "time_extraction": {
+                  "intent": {
+                    "hour": 15,
+                    "is_deadline": false,
+                    "minute": 0,
+                    "offset": 1,
+                    "unit": "day",
+                    "weekday": null
+                  },
+                  "reason": null
+                },
+                "time_text": "明天下午三点",
+                "title": "检查Windows教学提醒"
+              },
+              {
+                "evidence": "周五前交综述，附件是两篇参考论文。",
+                "location": null,
+                "time_extraction": {
+                  "intent": {
+                    "hour": null,
+                    "is_deadline": true,
+                    "minute": null,
+                    "offset": 0,
+                    "unit": "week",
+                    "weekday": 4
+                  },
+                  "reason": null
+                },
+                "time_text": "周五前",
+                "title": "交综述"
+              }
+            ],
+            "summary": "老师通知明天下午三点在实验楼302检查Windows教学提醒，并要求周五前交综述；附件为两篇参考论文（reference-a.pdf、reference-b.pdf）。"
+          },
+          "events": [
+            {
+              "task_id": "747cea1da951be66",
+              "title": "检查Windows教学提醒",
+              "time_text": "明天下午三点",
+              "location": "实验楼302",
+              "status": "pending",
+              "evidence": "明天下午三点在实验楼302检查Windows教学提醒；",
+              "time": {
+                "at": "2026-10-17T15:00:00+08:00",
+                "precision": "minute",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "point",
+                "time_text": "明天下午三点",
+                "timezone": "UTC+08:00"
+              }
+            },
+            {
+              "task_id": "d8415ed26bff6695",
+              "title": "交综述",
+              "time_text": "周五前",
+              "location": null,
+              "status": "pending",
+              "evidence": "周五前交综述，附件是两篇参考论文。",
+              "time": {
+                "date": "2026-10-16",
+                "precision": "date",
+                "reference_time": "2026-10-16T10:00:00+08:00",
+                "status": "resolved",
+                "time_kind": "deadline",
+                "time_text": "周五前",
+                "timezone": "UTC+08:00"
+              }
+            }
+          ],
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "reference-a.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            },
+            {
+              "availability": "mentioned",
+              "filename": "reference-b.pdf",
+              "media_type": null,
+              "source_attachment_id": null,
+              "category": "研究",
+              "classification_basis": "message_text"
+            }
+          ],
+          "role_match": null,
+          "priority": "normal"
+        }
+      }
+    },
+    {
+      "name": "--remind",
+      "transport": "real CLI/TCP",
+      "response": {
+        "reminder_id": "e841400011c3facafb3da24f",
+        "task_id": "747cea1da951be66",
+        "version": 1,
+        "title": "检查Windows教学提醒",
+        "remind_at": "2026-10-16T07:45:58.649400+00:00",
+        "channel": "console",
+        "status": "pending",
+        "attempts": 0,
+        "next_attempt_at": "2026-10-16T07:45:58.649400+00:00",
+        "lease_until": null,
+        "error_code": null,
+        "submitted_at": null
+      }
+    },
+    {
+      "name": "process_restart_catchup",
+      "response": {
+        "reminder_id": "e841400011c3facafb3da24f",
+        "task_id": "747cea1da951be66",
+        "version": 1,
+        "title": "检查Windows教学提醒",
+        "remind_at": "2026-10-16T07:45:58.649400+00:00",
+        "channel": "console",
+        "status": "submitted",
+        "attempts": 1,
+        "next_attempt_at": "2026-10-16T07:45:58.649400+00:00",
+        "lease_until": null,
+        "error_code": null,
+        "submitted_at": "2026-10-16T07:46:03.844986+00:00"
+      }
+    },
+    {
+      "name": "--reminders",
+      "transport": "real CLI/TCP",
+      "response": {
+        "count": 4,
+        "reminders": [
+          {
+            "reminder_id": "9c963ae7625a23a47f96ba9c",
+            "task_id": "747cea1da951be66",
+            "version": 1,
+            "title": "检查Windows教学提醒",
+            "remind_at": "2026-10-17T14:30:00+08:00",
+            "channel": "console",
+            "status": "pending",
+            "attempts": 0,
+            "next_attempt_at": "2026-10-17T06:30:00.000000+00:00",
+            "lease_until": null,
+            "error_code": null,
+            "submitted_at": null
+          },
+          {
+            "reminder_id": "96540934e495a91afdd82fc6",
+            "task_id": "d8415ed26bff6695",
+            "version": 1,
+            "title": "交综述",
+            "remind_at": "2026-10-16T09:00:00+08:00",
+            "channel": "console",
+            "status": "submitted",
+            "attempts": 1,
+            "next_attempt_at": "2026-10-16T01:00:00.000000+00:00",
+            "lease_until": null,
+            "error_code": null,
+            "submitted_at": "2026-10-16T07:45:45.343184+00:00"
+          },
+          {
+            "reminder_id": "5461b1d7f1a610726ded33df",
+            "task_id": "747cea1da951be66",
+            "version": 1,
+            "title": "检查Windows教学提醒",
+            "remind_at": "2026-10-16T07:45:46.780141+00:00",
+            "channel": "windows",
+            "status": "submitted",
+            "attempts": 1,
+            "next_attempt_at": "2026-10-16T07:45:46.780141+00:00",
+            "lease_until": null,
+            "error_code": null,
+            "submitted_at": "2026-10-16T07:45:52.692921+00:00"
+          },
+          {
+            "reminder_id": "e841400011c3facafb3da24f",
+            "task_id": "747cea1da951be66",
+            "version": 1,
+            "title": "检查Windows教学提醒",
+            "remind_at": "2026-10-16T07:45:58.649400+00:00",
+            "channel": "console",
+            "status": "submitted",
+            "attempts": 1,
+            "next_attempt_at": "2026-10-16T07:45:58.649400+00:00",
+            "lease_until": null,
+            "error_code": null,
+            "submitted_at": "2026-10-16T07:46:03.844986+00:00"
+          }
+        ]
+      }
+    }
+  ],
+  "assertions": [
+    "two_events_and_two_attachment_hints_preserved",
+    "two_automatic_reminders_created",
+    "date_only_event_has_no_at",
+    "windows_notification_system_call_submitted",
+    "real_mailbox_disabled_and_not_configured",
+    "duplicate_message_not_reanalyzed_or_replanned",
+    "old_service_port_unavailable_before_restart",
+    "new_process_submitted_persisted_overdue_reminder",
+    "windows_receipt_remains_submitted_after_restart",
+    "two_distinct_actual_uvicorn_processes",
+    "real_console_channel_logged_submission"
+  ],
+  "console_submissions": [
+    "{\"event\": \"reminder_submitted\", \"reminder_id\": \"96540934e495a91afdd82fc6\", \"task_id\": \"d8415ed26bff6695\", \"title\": \"交综述\", \"remind_at\": \"2026-10-16T09:00:00+08:00\"}",
+    "{\"event\": \"reminder_submitted\", \"reminder_id\": \"e841400011c3facafb3da24f\", \"task_id\": \"747cea1da951be66\", \"title\": \"检查Windows教学提醒\", \"remind_at\": \"2026-10-16T07:45:58.649400+00:00\"}"
+  ],
+  "limitations": [
+    "QQ account never connected; user must configure IMAP locally",
+    "Windows system call success is not user receipt/read confirmation",
+    "manual analysis-to-plan gap requires explicit plan recovery"
+  ],
+  "temporary_stores_cleaned": true
+}

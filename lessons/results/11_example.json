@@ -1,0 +1,229 @@
+{
+  "verified_at": "2026-10-16T13:19:11+08:00",
+  "kind": "real DeepSeek structured intent + Python calendar + discriminated precision + real TCP/CLI + temporary SQLite",
+  "direct_model_extraction_and_result": {
+    "request": {
+      "time_text": "下个月",
+      "reference_time": "2026-10-16T20:00:00+08:00"
+    },
+    "actual_extraction": {
+      "intent": {
+        "unit": "month",
+        "offset": 1,
+        "weekday": null,
+        "hour": null,
+        "minute": null,
+        "is_deadline": false
+      },
+      "reason": null
+    },
+    "result": {
+      "time_text": "下个月",
+      "reference_time": "2026-10-16T20:00:00+08:00",
+      "timezone": "UTC+08:00",
+      "precision": "date_range",
+      "status": "resolved",
+      "time_kind": "period",
+      "start_date": "2026-11-01",
+      "end_date": "2026-11-30"
+    }
+  },
+  "requests": [
+    {
+      "request": {
+        "time_text": "周三",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "周三",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date",
+        "status": "resolved",
+        "time_kind": "point",
+        "date": "2026-10-14"
+      }
+    },
+    {
+      "request": {
+        "time_text": "周三15:00",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "周三15:00",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "minute",
+        "status": "resolved",
+        "time_kind": "point",
+        "at": "2026-10-14T15:00:00+08:00"
+      }
+    },
+    {
+      "request": {
+        "time_text": "下个月",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "下个月",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date_range",
+        "status": "resolved",
+        "time_kind": "period",
+        "start_date": "2026-11-01",
+        "end_date": "2026-11-30"
+      }
+    },
+    {
+      "request": {
+        "time_text": "今年",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "今年",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date_range",
+        "status": "resolved",
+        "time_kind": "period",
+        "start_date": "2026-01-01",
+        "end_date": "2026-12-31"
+      }
+    },
+    {
+      "request": {
+        "time_text": "这周",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "这周",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date_range",
+        "status": "resolved",
+        "time_kind": "period",
+        "start_date": "2026-10-12",
+        "end_date": "2026-10-18"
+      }
+    },
+    {
+      "request": {
+        "time_text": "周四",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "周四",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date",
+        "status": "resolved",
+        "time_kind": "point",
+        "date": "2026-10-15"
+      }
+    },
+    {
+      "request": {
+        "time_text": "昨天",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "昨天",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date",
+        "status": "resolved",
+        "time_kind": "point",
+        "date": "2026-10-15"
+      }
+    },
+    {
+      "request": {
+        "time_text": "周三前",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "周三前",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "date",
+        "status": "resolved",
+        "time_kind": "deadline",
+        "date": "2026-10-14"
+      }
+    },
+    {
+      "request": {
+        "time_text": "不是周三",
+        "reference_time": "2026-10-16T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "不是周三",
+        "reference_time": "2026-10-16T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "precision": "unresolved",
+        "status": "needs_confirmation",
+        "time_kind": "unknown",
+        "confirmation_question": "该表达为否定形式，未提供真实的目标日期，无法确定相对时间。"
+      }
+    }
+  ],
+  "cli_http_result": {
+    "time_text": "周三",
+    "reference_time": "2026-10-16T20:00:00+08:00",
+    "timezone": "UTC+08:00",
+    "precision": "date",
+    "status": "resolved",
+    "time_kind": "point",
+    "date": "2026-10-14"
+  },
+  "legacy_normalize_result": {
+    "time_text": "明天下午三点",
+    "reference_time": "2026-10-16T20:00:00+08:00",
+    "timezone": "UTC+08:00",
+    "status": "resolved",
+    "time_kind": "point",
+    "at": "2026-10-17T15:00:00+08:00",
+    "confirmation_question": null
+  },
+  "checks": {
+    "all_nine_semantic_samples_matched": true,
+    "invalid_reference_http422": true,
+    "cli_http_matches": true,
+    "legacy_endpoint_preserved": true,
+    "task_records_unchanged": true,
+    "user_pending_routes_preserved": true
+  },
+  "offline_tests_passed": {
+    "lesson11": 9,
+    "previous_lessons": 64,
+    "total": 73
+  },
+  "tasks_before": [
+    {
+      "id": "ab3636f82033d807",
+      "title": "[第十一课教学示例] 时间解释不能修改此待办",
+      "time_text": "周五前",
+      "location": null,
+      "status": "pending"
+    }
+  ],
+  "tasks_after": [
+    {
+      "id": "ab3636f82033d807",
+      "title": "[第十一课教学示例] 时间解释不能修改此待办",
+      "time_text": "周五前",
+      "location": null,
+      "status": "pending"
+    }
+  ]
+}

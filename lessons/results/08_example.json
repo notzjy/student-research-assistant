@@ -1,0 +1,98 @@
+{
+  "kind": "real TCP HTTP + DeepSeek + LangGraph + list_tasks + SQLite; synthetic tasks",
+  "tasks_before_queries": [
+    {
+      "id": "a6de975b69bcd205",
+      "title": "[教学示例] 准备组会汇报",
+      "time_text": "明天下午三点",
+      "location": "实验楼302",
+      "status": "pending"
+    },
+    {
+      "id": "bc07e85b087e7f1b",
+      "title": "[教学示例] 提交综述",
+      "time_text": "周五前",
+      "location": null,
+      "status": "completed"
+    }
+  ],
+  "queries": [
+    {
+      "request": {
+        "text": "我还有哪些事没做完？"
+      },
+      "response": {
+        "execution_status": "completed",
+        "reply": "你目前有 1 项未完成的待办：\n\n- **[教学示例] 准备组会汇报**：明天下午三点，地点实验楼302\n\n这是查询结果中的全部未完成事项，没有其他不明确的信息。",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "pending",
+            "count": 1,
+            "tasks": [
+              {
+                "id": "a6de975b69bcd205",
+                "title": "[教学示例] 准备组会汇报",
+                "time_text": "明天下午三点",
+                "location": "实验楼302",
+                "status": "pending"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "text": "我已经完成了哪些待办？"
+      },
+      "response": {
+        "execution_status": "completed",
+        "reply": "你目前有 1 项已完成的待办：\n\n- **[教学示例] 提交综述**（时间：周五前，地点未说明）\n\n这是查询到的全部已完成记录。如需查看未完成事项，可以告诉我。",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "completed",
+            "count": 1,
+            "tasks": [
+              {
+                "id": "bc07e85b087e7f1b",
+                "title": "[教学示例] 提交综述",
+                "time_text": "周五前",
+                "location": null,
+                "status": "completed"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "checks": {
+    "task_records_unchanged": true,
+    "user_pending_route_matches": true
+  },
+  "offline_tests_passed": {
+    "lesson08": 8,
+    "previous_lessons": 36,
+    "total": 44
+  }
+}

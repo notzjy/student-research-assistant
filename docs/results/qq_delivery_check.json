@@ -1,0 +1,38 @@
+{
+  "verified_at": "2026-10-17T12:31:56.354768+08:00",
+  "mode": "actual QQ IMAP SSL readonly INBOX and BODY.PEEK; no model, no notifications",
+  "configured": true,
+  "first_sync_seconds": 1.398,
+  "first_sync": {
+    "received": 2,
+    "skipped": 0,
+    "initialized": true,
+    "uidvalidity_reset": false
+  },
+  "parsed_messages": [
+    {
+      "body_nonempty": true,
+      "body_characters": 1015,
+      "attachments": 0,
+      "reference_time_has_offset": true
+    },
+    {
+      "body_nonempty": true,
+      "body_characters": 2034,
+      "attachments": 0,
+      "reference_time_has_offset": true
+    }
+  ],
+  "reconnect_sync_seconds": 0.487,
+  "second_sync": {
+    "received": 0,
+    "skipped": 0,
+    "initialized": false,
+    "uidvalidity_reset": false
+  },
+  "incremental_no_duplicate": true,
+  "status": "partial_verified",
+  "real_attachment_verified": false,
+  "arrival_to_notification_latency_verified": false,
+  "temporary_data_removed": true
+}

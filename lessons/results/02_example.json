@@ -1,0 +1,17 @@
+{
+  "category": "研究",
+  "events": [
+    {
+      "title": "开组会",
+      "time_text": "明天下午三点",
+      "location": "实验楼302"
+    },
+    {
+      "title": "交综述",
+      "time_text": "周五前",
+      "location": null
+    }
+  ],
+  "attachment_description": "附件是两篇参考论文",
+  "attachment_count": 2
+}

@@ -1,0 +1,48 @@
+{
+  "notice": "明天下午三点在实验楼302开组会；周五前交综述，附件是两篇参考论文。",
+  "tool_calls": [
+    {
+      "name": "save_task",
+      "args": {
+        "title": "开组会",
+        "time_text": "明天下午三点",
+        "location": "实验楼302"
+      },
+      "id": "call_00_EgEDGpuxnhOmzPP8ah6l0727",
+      "type": "tool_call"
+    },
+    {
+      "name": "save_task",
+      "args": {
+        "title": "交综述",
+        "time_text": "周五前",
+        "location": null
+      },
+      "id": "call_01_zHLiJrLFhzPOq30Mz6cR3140",
+      "type": "tool_call"
+    }
+  ],
+  "tool_results": [
+    {
+      "status": "created",
+      "task": {
+        "id": "51806c51c5b85ff4",
+        "title": "开组会",
+        "time_text": "明天下午三点",
+        "location": "实验楼302",
+        "status": "pending"
+      }
+    },
+    {
+      "status": "created",
+      "task": {
+        "id": "c196e667f980cc65",
+        "title": "交综述",
+        "time_text": "周五前",
+        "location": null,
+        "status": "pending"
+      }
+    }
+  ],
+  "final_reply": "已保存 2 项待办：\n\n1. **开组会** — 明天下午三点，实验楼302\n2. **交综述** — 周五前，地点未说明\n\n附件中的两篇参考论文未另行建待办（仅作为参考资料）。另外，综述的提交地点/方式、以及“周五”具体指哪个日期，通知里没有明确说明。"
+}

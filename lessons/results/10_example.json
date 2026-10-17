@@ -1,0 +1,162 @@
+{
+  "verified_at": "2026-10-16T12:55:37+08:00",
+  "kind": "deterministic time rules + real TCP HTTP + lesson10 CLI + temporary SQLite; no model calls",
+  "requests": [
+    {
+      "request": {
+        "time_text": "明天下午三点",
+        "reference_time": "2026-10-15T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "明天下午三点",
+        "reference_time": "2026-10-15T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "status": "resolved",
+        "time_kind": "point",
+        "at": "2026-10-16T15:00:00+08:00",
+        "confirmation_question": null
+      }
+    },
+    {
+      "request": {
+        "time_text": "明天15:00",
+        "reference_time": "2026-10-15T23:30:00Z"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "明天15:00",
+        "reference_time": "2026-10-15T23:30:00+00:00",
+        "timezone": "UTC+08:00",
+        "status": "resolved",
+        "time_kind": "point",
+        "at": "2026-10-17T15:00:00+08:00",
+        "confirmation_question": null
+      }
+    },
+    {
+      "request": {
+        "time_text": "周五前",
+        "reference_time": "2026-10-15T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "周五前",
+        "reference_time": "2026-10-15T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "status": "needs_confirmation",
+        "time_kind": "deadline",
+        "at": null,
+        "confirmation_question": "请确认具体哪一天、几点截止，例如2026-10-23 18:00前；不会自动补成当天结束。"
+      }
+    },
+    {
+      "request": {
+        "time_text": "2026-10-20 18:00前",
+        "reference_time": "2026-10-15T20:00:00+08:00"
+      },
+      "http_status": 200,
+      "response": {
+        "time_text": "2026-10-20 18:00前",
+        "reference_time": "2026-10-15T20:00:00+08:00",
+        "timezone": "UTC+08:00",
+        "status": "resolved",
+        "time_kind": "deadline",
+        "at": "2026-10-20T18:00:00+08:00",
+        "confirmation_question": null
+      }
+    },
+    {
+      "request": {
+        "time_text": "明天25:00",
+        "reference_time": "2026-10-15T20:00:00+08:00"
+      },
+      "http_status": 422,
+      "response": {
+        "detail": "时间表达中的日期或钟点不合法，或超出可表示范围。"
+      }
+    },
+    {
+      "request": {
+        "time_text": "2026-02-30前",
+        "reference_time": "2026-10-15T20:00:00+08:00"
+      },
+      "http_status": 422,
+      "response": {
+        "detail": "时间表达中的日期或钟点不合法，或超出可表示范围。"
+      }
+    },
+    {
+      "request": {
+        "time_text": "明天15:00",
+        "reference_time": "2026-10-15T20:00:00"
+      },
+      "http_status": 422,
+      "response": {
+        "detail": [
+          {
+            "type": "value_error",
+            "loc": [
+              "body",
+              "reference_time"
+            ],
+            "msg": "Value error, 参考时间必须是带时区的 ISO 格式，例如 2026-10-15T20:00:00+08:00",
+            "input": "2026-10-15T20:00:00",
+            "ctx": {
+              "error": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "time_text": "明天15:00",
+        "reference_time": "9999-12-31T23:00:00Z"
+      },
+      "http_status": 422,
+      "response": {
+        "detail": "时间表达中的日期或钟点不合法，或超出可表示范围。"
+      }
+    }
+  ],
+  "cli_http_result": {
+    "time_text": "明天下午三点",
+    "reference_time": "2026-10-15T20:00:00+08:00",
+    "timezone": "UTC+08:00",
+    "status": "resolved",
+    "time_kind": "point",
+    "at": "2026-10-16T15:00:00+08:00",
+    "confirmation_question": null
+  },
+  "checks": {
+    "http_matches_direct_function": true,
+    "cli_http_matches_direct_function": true,
+    "task_records_unchanged": true,
+    "user_pending_routes_preserved": true,
+    "temporary_server_model_configuration_empty": true
+  },
+  "tasks_before": [
+    {
+      "id": "21b483ff4463b50a",
+      "title": "[第十课教学示例] 时间预览不可修改此待办",
+      "time_text": "周五前",
+      "location": null,
+      "status": "pending"
+    }
+  ],
+  "tasks_after": [
+    {
+      "id": "21b483ff4463b50a",
+      "title": "[第十课教学示例] 时间预览不可修改此待办",
+      "time_text": "周五前",
+      "location": null,
+      "status": "pending"
+    }
+  ],
+  "offline_tests_passed": {
+    "lesson10": 12,
+    "previous_lessons": 52,
+    "total": 64
+  }
+}

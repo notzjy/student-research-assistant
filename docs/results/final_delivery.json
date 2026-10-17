@@ -1,0 +1,790 @@
+{
+  "mode": "actual owned launcher/backend/Streamlit/DeepSeek/BGE512/Qdrant/Edge; synthetic fixtures; no real QQ or Windows notification",
+  "checks": [
+    {
+      "name": "actual_one_click_launcher_both_services",
+      "passed": true
+    },
+    {
+      "name": "isolated_no_real_mail",
+      "passed": true
+    },
+    {
+      "name": "live_absolute_minute_range_and_deadline",
+      "passed": true,
+      "message": {
+        "message_id": "78257c88d3becc58f54d6cfd",
+        "source_message": {
+          "account_id": "delivery-demo",
+          "attachments": [
+            {
+              "availability": "mentioned",
+              "filename": "研究资料.md",
+              "media_type": null,
+              "source_attachment_id": null
+            },
+            {
+              "availability": "mentioned",
+              "filename": "材料清单.zip",
+              "media_type": null,
+              "source_attachment_id": null
+            }
+          ],
+          "sender_id": "teacher-001",
+          "sender_name": "示例老师",
+          "sent_at": "2026-10-17T10:00:00+08:00",
+          "source": "manual",
+          "source_message_id": "delivery-001",
+          "text": "10月20日下午两点到四点在实验楼302开组会；10月21日前提交研究综述，附件是两份参考资料。"
+        },
+        "processing_status": "completed",
+        "error_code": null,
+        "analysis": {
+          "attachment_count": 2,
+          "attachment_description": "研究资料.md、材料清单.zip",
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "10月20日下午两点到四点在实验楼302开组会",
+              "location": "实验楼302",
+              "time_extraction": {
+                "intent": {
+                  "end": {
+                    "day": 20,
+                    "hour": 16,
+                    "is_deadline": false,
+                    "kind": "absolute",
+                    "minute": 0,
+                    "month": 10,
+                    "timezone_offset": null,
+                    "year": 2026,
+                    "year_offset": 0
+                  },
+                  "kind": "range",
+                  "start": {
+                    "day": 20,
+                    "hour": 14,
+                    "is_deadline": false,
+                    "kind": "absolute",
+                    "minute": 0,
+                    "month": 10,
+                    "timezone_offset": null,
+                    "year": 2026,
+                    "year_offset": 0
+                  }
+                },
+                "reason": null
+              },
+              "time_text": "10月20日下午两点到四点",
+              "title": "参加组会"
+            },
+            {
+              "evidence": "10月21日前提交研究综述",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "day": 21,
+                  "hour": null,
+                  "is_deadline": true,
+                  "kind": "absolute",
+                  "minute": null,
+                  "month": 10,
+                  "timezone_offset": null,
+                  "year": 2026,
+                  "year_offset": 0
+                },
+                "reason": null
+              },
+              "time_text": "10月21日前",
+              "title": "提交研究综述"
+            }
+          ],
+          "summary": "老师通知10月20日14:00至16:00在实验楼302开组会，并要求10月21日前提交研究综述；附件为两份参考资料（研究资料.md、材料清单.zip）。",
+          "labels": []
+        },
+        "events": [
+          {
+            "task_id": "56ce7eae1580a1a3",
+            "title": "参加组会",
+            "time_text": "10月20日下午两点到四点",
+            "location": "实验楼302",
+            "status": "pending",
+            "evidence": "10月20日下午两点到四点在实验楼302开组会",
+            "time": {
+              "end": "2026-10-20T16:00:00+08:00",
+              "precision": "minute_range",
+              "reference_time": "2026-10-17T10:00:00+08:00",
+              "start": "2026-10-20T14:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "period",
+              "time_text": "10月20日下午两点到四点",
+              "timezone": "UTC+08:00"
+            },
+            "review": {
+              "version": 0,
+              "changes": {},
+              "updated_at": null
+            }
+          },
+          {
+            "task_id": "b1f86eec8c654b9b",
+            "title": "提交研究综述",
+            "time_text": "10月21日前",
+            "location": null,
+            "status": "pending",
+            "evidence": "10月21日前提交研究综述",
+            "time": {
+              "date": "2026-10-21",
+              "precision": "date",
+              "reference_time": "2026-10-17T10:00:00+08:00",
+              "status": "resolved",
+              "time_kind": "deadline",
+              "time_text": "10月21日前",
+              "timezone": "UTC+08:00"
+            },
+            "review": {
+              "version": 0,
+              "changes": {},
+              "updated_at": null
+            }
+          }
+        ],
+        "attachments": [
+          {
+            "availability": "mentioned",
+            "filename": "研究资料.md",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text",
+            "labels": []
+          },
+          {
+            "availability": "mentioned",
+            "filename": "材料清单.zip",
+            "media_type": null,
+            "source_attachment_id": null,
+            "category": "研究",
+            "classification_basis": "message_text",
+            "labels": []
+          }
+        ],
+        "role_match": {
+          "source": "manual",
+          "account_id": "delivery-demo",
+          "sender_id": "teacher-001",
+          "role": "导师",
+          "important": true
+        },
+        "priority": "high",
+        "original_analysis": {
+          "attachment_count": 2,
+          "attachment_description": "研究资料.md、材料清单.zip",
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "10月20日下午两点到四点在实验楼302开组会",
+              "location": "实验楼302",
+              "time_extraction": {
+                "intent": {
+                  "end": {
+                    "day": 20,
+                    "hour": 16,
+                    "is_deadline": false,
+                    "kind": "absolute",
+                    "minute": 0,
+                    "month": 10,
+                    "timezone_offset": null,
+                    "year": 2026,
+                    "year_offset": 0
+                  },
+                  "kind": "range",
+                  "start": {
+                    "day": 20,
+                    "hour": 14,
+                    "is_deadline": false,
+                    "kind": "absolute",
+                    "minute": 0,
+                    "month": 10,
+                    "timezone_offset": null,
+                    "year": 2026,
+                    "year_offset": 0
+                  }
+                },
+                "reason": null
+              },
+              "time_text": "10月20日下午两点到四点",
+              "title": "参加组会"
+            },
+            {
+              "evidence": "10月21日前提交研究综述",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "day": 21,
+                  "hour": null,
+                  "is_deadline": true,
+                  "kind": "absolute",
+                  "minute": null,
+                  "month": 10,
+                  "timezone_offset": null,
+                  "year": 2026,
+                  "year_offset": 0
+                },
+                "reason": null
+              },
+              "time_text": "10月21日前",
+              "title": "提交研究综述"
+            }
+          ],
+          "summary": "老师通知10月20日14:00至16:00在实验楼302开组会，并要求10月21日前提交研究综述；附件为两份参考资料（研究资料.md、材料清单.zip）。"
+        },
+        "labels": [],
+        "review": {
+          "version": 0,
+          "changes": {},
+          "updated_at": null
+        }
+      }
+    },
+    {
+      "name": "minute_range_date_precision",
+      "passed": true
+    },
+    {
+      "name": "live_date_range",
+      "passed": true,
+      "time": {
+        "end_date": "2026-10-24",
+        "precision": "date_range",
+        "reference_time": "2026-10-17T10:00:00+08:00",
+        "start_date": "2026-10-22",
+        "status": "resolved",
+        "time_kind": "period",
+        "time_text": "10月22日到10月24日",
+        "timezone": "UTC+08:00"
+      }
+    },
+    {
+      "name": "priority_arrival_without_fake_task",
+      "passed": true
+    },
+    {
+      "name": "priority_explicit_read",
+      "passed": true
+    },
+    {
+      "name": "manual_classification_labels_and_filter",
+      "passed": true,
+      "review": {
+        "version": 1,
+        "updated_at": "2026-10-17T04:44:32.358291+00:00",
+        "changes": {
+          "category": "求职",
+          "labels": [
+            "研究项目",
+            "待整理"
+          ],
+          "summary": "人工校对后的研究组会与材料安排。"
+        }
+      }
+    },
+    {
+      "name": "manual_original_and_history_preserved",
+      "passed": true
+    },
+    {
+      "name": "event_edit_replans_versioned_automatic_job",
+      "passed": true,
+      "event": {
+        "task_id": "56ce7eae1580a1a3",
+        "title": "组会（已改期）",
+        "time_text": "10月20日15:30到17:00",
+        "location": "实验楼302",
+        "status": "pending",
+        "time": {
+          "time_text": "10月20日15:30到17:00",
+          "reference_time": "2026-10-17T10:00:00+08:00",
+          "timezone": "UTC+08:00",
+          "precision": "minute_range",
+          "status": "resolved",
+          "time_kind": "period",
+          "start": "2026-10-20T15:30:00+08:00",
+          "end": "2026-10-20T17:00:00+08:00"
+        },
+        "evidence": "10月20日下午两点到四点在实验楼302开组会",
+        "review": {
+          "version": 1,
+          "changes": {
+            "title": "组会（已改期）",
+            "time_text": "10月20日15:30到17:00",
+            "time": {
+              "time_text": "10月20日15:30到17:00",
+              "reference_time": "2026-10-17T10:00:00+08:00",
+              "timezone": "UTC+08:00",
+              "precision": "minute_range",
+              "status": "resolved",
+              "time_kind": "period",
+              "start": "2026-10-20T15:30:00+08:00",
+              "end": "2026-10-20T17:00:00+08:00"
+            }
+          },
+          "updated_at": "2026-10-17T04:44:33.233767+00:00"
+        }
+      }
+    },
+    {
+      "name": "event_cancel_preserves_original",
+      "passed": true
+    },
+    {
+      "name": "cancelled_task_http_state_consistent",
+      "passed": true
+    },
+    {
+      "name": "live_agent_cancelled_tool_consistent",
+      "passed": true,
+      "response": {
+        "thread_id": "final-cancelled-query",
+        "turn_id": "a90bcf99-1c75-4e32-8212-67b665b2683d",
+        "reply": "当前已取消的事项共 1 项：\n\n- **提交研究综述**（时间：10月21日前；ID：b1f86eec8c654b9b）\n\n未修改任何状态。",
+        "execution_status": "completed",
+        "node_order": [
+          "model",
+          "tools",
+          "report",
+          "model"
+        ],
+        "tool_names": [
+          "list_tasks"
+        ],
+        "tool_results": [
+          {
+            "status": "queried",
+            "filter_status": "cancelled",
+            "count": 1,
+            "tasks": [
+              {
+                "id": "b1f86eec8c654b9b",
+                "title": "提交研究综述",
+                "time_text": "10月21日前",
+                "location": null,
+                "status": "cancelled"
+              }
+            ]
+          }
+        ],
+        "history_count": 4
+      }
+    },
+    {
+      "name": "real_embedding_and_file_binding",
+      "passed": true
+    },
+    {
+      "name": "live_document_body_classification_evidence",
+      "passed": true,
+      "document": {
+        "document_id": "60842edd074337fb1429d11f490d1b51a034e93d139da8262842b11649d97c67",
+        "filename": "研究资料.md",
+        "sha256": "60842edd074337fb1429d11f490d1b51a034e93d139da8262842b11649d97c67",
+        "status": "indexed",
+        "error_code": null,
+        "page_count": 1,
+        "chunk_count": 1,
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "sources": [
+          {
+            "message_id": "78257c88d3becc58f54d6cfd",
+            "attachment_index": 0,
+            "source": "manual",
+            "account_id": "delivery-demo",
+            "source_message_id": "delivery-001",
+            "sender_id": "teacher-001",
+            "sender_name": "示例老师",
+            "sent_at": "2026-10-17T10:00:00+08:00"
+          }
+        ],
+        "category": "研究",
+        "labels": [
+          "向量检索",
+          "研究项目",
+          "验收标准",
+          "Recall@5",
+          "查询延迟"
+        ],
+        "summary": "该文件为研究项目检索验收说明，要求星河项目的向量检索定位研究资料时Recall@5不低于0.85、平均查询耗时不超过120毫秒，且每次回答须给出文件出处。",
+        "classification_basis": "document_text",
+        "coverage": {
+          "read_characters": 78,
+          "read_pages": 1,
+          "scope": "full_text",
+          "total_characters": 78,
+          "total_pages": 1
+        },
+        "evidence": [
+          {
+            "page": 1,
+            "quote": "实验要求Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。每次回答须给出文件出处。"
+          }
+        ],
+        "classification": {
+          "status": "completed",
+          "result": {
+            "category": "研究",
+            "coverage": {
+              "read_characters": 78,
+              "read_pages": 1,
+              "scope": "full_text",
+              "total_characters": 78,
+              "total_pages": 1
+            },
+            "evidence": [
+              {
+                "page": 1,
+                "quote": "实验要求Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。每次回答须给出文件出处。"
+              }
+            ],
+            "labels": [
+              "向量检索",
+              "研究项目",
+              "验收标准",
+              "Recall@5",
+              "查询延迟"
+            ],
+            "summary": "该文件为研究项目检索验收说明，要求星河项目的向量检索定位研究资料时Recall@5不低于0.85、平均查询耗时不超过120毫秒，且每次回答须给出文件出处。"
+          },
+          "error_code": null,
+          "updated_at": "2026-10-17T04:44:37.479210+00:00"
+        },
+        "review": {
+          "version": 0,
+          "changes": {},
+          "updated_at": null
+        }
+      }
+    },
+    {
+      "name": "any_format_original_download",
+      "passed": true
+    },
+    {
+      "name": "file_labels_persist",
+      "passed": true
+    },
+    {
+      "name": "wireless_gateway_auth_persist_dedup",
+      "passed": true
+    },
+    {
+      "name": "live_gateway_to_agent_and_reminder",
+      "passed": true,
+      "message": {
+        "message_id": "dcdcc1298be837180e5c50ba",
+        "source_message": {
+          "account_id": "delivery-phone",
+          "attachments": [],
+          "sender_id": "notification-e2398b56670bc71821b4829a",
+          "sender_name": "示例研究会话",
+          "sent_at": "2026-10-17T11:59:00+08:00",
+          "source": "wechat",
+          "source_message_id": "notification-372a01f5e468413d8485e0d37c617d85",
+          "text": "请在10月23日下午三点前提交研究进度报告。"
+        },
+        "processing_status": "completed",
+        "error_code": null,
+        "analysis": {
+          "attachment_count": 0,
+          "attachment_description": null,
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "请在10月23日下午三点前提交研究进度报告。",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "day": 23,
+                  "hour": 15,
+                  "is_deadline": true,
+                  "kind": "absolute",
+                  "minute": 0,
+                  "month": 10,
+                  "timezone_offset": null,
+                  "year": null,
+                  "year_offset": 0
+                },
+                "reason": null
+              },
+              "time_text": "10月23日下午三点前",
+              "title": "提交研究进度报告"
+            }
+          ],
+          "summary": "通知要求在10月23日下午三点前提交研究进度报告。",
+          "labels": []
+        },
+        "events": [
+          {
+            "task_id": "6da120024f66314e",
+            "title": "提交研究进度报告",
+            "time_text": "10月23日下午三点前",
+            "location": null,
+            "status": "pending",
+            "evidence": "请在10月23日下午三点前提交研究进度报告。",
+            "time": {
+              "at": "2026-10-23T15:00:00+08:00",
+              "precision": "minute",
+              "reference_time": "2026-10-17T11:59:00+08:00",
+              "status": "resolved",
+              "time_kind": "deadline",
+              "time_text": "10月23日下午三点前",
+              "timezone": "UTC+08:00"
+            },
+            "review": {
+              "version": 0,
+              "changes": {},
+              "updated_at": null
+            }
+          }
+        ],
+        "attachments": [],
+        "role_match": {
+          "source": "wechat",
+          "account_id": "delivery-phone",
+          "sender_id": "notification-e2398b56670bc71821b4829a",
+          "role": "研究伙伴",
+          "important": true
+        },
+        "priority": "high",
+        "original_analysis": {
+          "attachment_count": 0,
+          "attachment_description": null,
+          "category": "研究",
+          "events": [
+            {
+              "evidence": "请在10月23日下午三点前提交研究进度报告。",
+              "location": null,
+              "time_extraction": {
+                "intent": {
+                  "day": 23,
+                  "hour": 15,
+                  "is_deadline": true,
+                  "kind": "absolute",
+                  "minute": 0,
+                  "month": 10,
+                  "timezone_offset": null,
+                  "year": null,
+                  "year_offset": 0
+                },
+                "reason": null
+              },
+              "time_text": "10月23日下午三点前",
+              "title": "提交研究进度报告"
+            }
+          ],
+          "summary": "通知要求在10月23日下午三点前提交研究进度报告。"
+        },
+        "labels": [],
+        "review": {
+          "version": 0,
+          "changes": {},
+          "updated_at": null
+        },
+        "source_metadata": {
+          "completeness": "notification_excerpt",
+          "time_basis": "app_message_timestamp",
+          "text_source": "latest_message",
+          "identity_scope": "device_app_conversation",
+          "package_name": "com.tencent.mm",
+          "received_at": "2026-10-17T04:44:38.947347+00:00",
+          "sender_identity_verified": false
+        }
+      }
+    },
+    {
+      "name": "actual_signed_apk_served",
+      "passed": true,
+      "sha256": "7efcbe9ab08c28a0a22fbf0562c1ff4f2d3eb878a16698d19e86e482ca95cda1",
+      "bytes": 24979,
+      "device_install_tested": false
+    },
+    {
+      "name": "actual_ui_message_edits_labels_and_dates",
+      "passed": true
+    },
+    {
+      "name": "actual_ui_rag_answer",
+      "passed": true,
+      "answer": {
+        "question": "星河项目要求Recall@5至少多少，平均查询耗时不得高于多少？",
+        "status": "answered",
+        "answer": "星河项目要求Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。",
+        "citations": [
+          {
+            "chunk_id": "ef5608ce-ec3d-5c5f-9d2f-67ef270ade95",
+            "quote": "实验要求Recall@5不得低于0.85，平均查询耗时不得高于120毫秒。",
+            "document_id": "60842edd074337fb1429d11f490d1b51a034e93d139da8262842b11649d97c67",
+            "filename": "研究资料.md",
+            "page": 1,
+            "start": 28,
+            "end": 65,
+            "score": 0.8459883221120543,
+            "sources": [
+              {
+                "message_id": "78257c88d3becc58f54d6cfd",
+                "attachment_index": 0,
+                "source": "manual",
+                "account_id": "delivery-demo",
+                "source_message_id": "delivery-001",
+                "sender_id": "teacher-001",
+                "sender_name": "示例老师",
+                "sent_at": "2026-10-17T10:00:00+08:00"
+              }
+            ]
+          }
+        ],
+        "reason": null,
+        "model_id": "BAAI/bge-small-zh-v1.5|query=zh-v1",
+        "retrieved_count": 1
+      }
+    },
+    {
+      "name": "actual_ui_page_重点收件箱",
+      "passed": true
+    },
+    {
+      "name": "actual_ui_page_手机接入",
+      "passed": true
+    },
+    {
+      "name": "actual_ui_page_运行追踪",
+      "passed": true
+    },
+    {
+      "name": "actual_ui_page_提醒与角色",
+      "passed": true
+    },
+    {
+      "name": "real_edge_render_and_screenshot",
+      "passed": true,
+      "path": "docs/results/final_dashboard.png",
+      "sha256": "4ce5ccb7895c26a9fd4abfc459a67ee288fa3c43348ff91c7410beba7659c22c"
+    },
+    {
+      "name": "actual_launcher_stop_both_ports",
+      "passed": true
+    },
+    {
+      "name": "actual_restart_persistence_all_domains",
+      "passed": true,
+      "thread_response": {
+        "thread_id": "final-delivery-thread",
+        "turn_id": "054e3384-0c2d-4e68-8f87-cfaf729ae200",
+        "reply": "刚才的项目代号是「星河交付版」。",
+        "execution_status": "no_tools",
+        "node_order": [
+          "model"
+        ],
+        "tool_names": [],
+        "tool_results": [],
+        "history_count": 4
+      }
+    }
+  ],
+  "actual_server_process_ids": [
+    16444,
+    25688
+  ],
+  "status": "passed",
+  "temporary_data_removed": true,
+  "verified_at": "2026-10-17T12:49:07.703278+08:00",
+  "checks_passed": 29,
+  "regression": {
+    "tests": {
+      "count": 264,
+      "exit_code": 0,
+      "log": "local-data/final-verified-tests.log"
+    },
+    "lessons": {
+      "count": 73,
+      "exit_code": 0,
+      "log": "local-data/final-verified-lessons.log"
+    },
+    "total": 337,
+    "status": "passed"
+  },
+  "screenshot": {
+    "path": "docs/results/final_dashboard.png",
+    "visually_reviewed": true
+  },
+  "android_artifact": {
+    "path": "android-notification-bridge/dist/student-assistant-bridge.apk",
+    "bytes": 24979,
+    "sha256": "7efcbe9ab08c28a0a22fbf0562c1ff4f2d3eb878a16698d19e86e482ca95cda1",
+    "signature_verified": true,
+    "source_hashes_match": true,
+    "minimum_android": "8.0",
+    "desktop_url_checks": 18,
+    "device_install_tested": false,
+    "real_notifications_tested": false,
+    "runtime_usb_required": false,
+    "wireless_lan_supported": true,
+    "offline_persistent_queue_implemented": true,
+    "cross_network_https_deployed": false
+  },
+  "qq_readonly": {
+    "evidence": "docs/results/qq_delivery_check.json",
+    "body_reads_verified": true,
+    "reconnect_no_new_mail_no_duplicates_verified": true,
+    "new_arrival_incremental_verified": false,
+    "real_attachment_verified": false,
+    "arrival_to_notification_latency_verified": false,
+    "request_duration_is_notification_latency": false
+  },
+  "boundaries": {
+    "live_business_fixtures": "synthetic original messages/documents; real model/embedding/vector store/HTTP/UI/restart",
+    "notification_content": "application-displayed excerpts; not guaranteed complete chat, original timestamp, stable sender identity or attachment bytes",
+    "original_files": "only actual uploaded or MIME attachment bytes count as obtained",
+    "document_parsing": "txt/md/text PDFs <= 10MB, no OCR; archive arbitrary formats <= 25MB",
+    "windows_notification_sent_this_acceptance": false,
+    "docker": "configuration statically checked; CLI absent, image build and containers not run",
+    "upstream": "student service profile only; complete original upstream demo not run"
+  },
+  "environment": {
+    "python": "3.13.9",
+    "locked_packages": 97,
+    "pip_check": "passed",
+    "python_docstring_audit_files": 75,
+    "missing_function_or_class_docstrings": 0,
+    "git": {
+      "branch": "main",
+      "initialized": true,
+      "staged": false,
+      "committed": false,
+      "remote_configured": false
+    }
+  },
+  "progress": {
+    "project_percent": 83,
+    "stage_scores": [
+      10,
+      10,
+      20,
+      15,
+      20,
+      0,
+      8
+    ],
+    "learning_points": 400,
+    "learning_total": 1300,
+    "learning_percent_rounded": 31,
+    "teaching": "paused at user request",
+    "scoring_basis": "docs/PROJECT_PLAN.md",
+    "complete_original_multiplatform_goal": false
+  },
+  "cleanup": {
+    "owned_launcher_processes_stopped": true,
+    "owned_temporary_data_removed": true,
+    "existing_user_database_modified_by_acceptance": false,
+    "legacy_lessons_source_modified": false
+  }
+}

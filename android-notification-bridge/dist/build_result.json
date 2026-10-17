@@ -1,0 +1,25 @@
+{
+  "artifact": "student-assistant-bridge.apk",
+  "bytes": 24979,
+  "sha256": "7efcbe9ab08c28a0a22fbf0562c1ff4f2d3eb878a16698d19e86e482ca95cda1",
+  "package": "com.studentassistant.bridge",
+  "version": "1.0",
+  "min_sdk": 26,
+  "target_sdk": 35,
+  "source_files": 7,
+  "signature_verified": true,
+  "desktop_url_validation": "Server URL validation passed: 18 checks; no Android device test claimed.",
+  "source_sha256": {
+    "AndroidManifest.xml": "b737dc50193037d3011354f6169ec3a61878f8019f6a1b25f56afa7e531a3a3c",
+    "src/com/studentassistant/bridge/BootReceiver.java": "062f73748c6cc78450a2376431a44b388720c128d987ca54815456729361f503",
+    "src/com/studentassistant/bridge/BridgeConfig.java": "2a5794bd17d445bb0d0751b29fcf33495478966fef08c69bd641674fec6f8905",
+    "src/com/studentassistant/bridge/BridgeQueue.java": "ec1c2cd522c75fc771cf91ea3da849a52e666e27b179be3f4e52421bb255b5d9",
+    "src/com/studentassistant/bridge/BridgeTransport.java": "cbab31bcb7d8c21bab1e7d8fc677c76e751a0d2cf6cf48ebe0a8d24820cd4f92",
+    "src/com/studentassistant/bridge/MainActivity.java": "3a1eb1af4926bca899416900f466f8a571b46a2ea9a1f520a097a2da787d684a",
+    "src/com/studentassistant/bridge/NotificationBridgeService.java": "dd8d67a3f8a2a43a727872d1e3a2e7979aa7dc37bb5e62c86a7ee8abe35e2bfb",
+    "src/com/studentassistant/bridge/RetryJobService.java": "a8f4b1d3ded241b1783968c299a00c378fc6574cec3e7145bfcf4b4370133a0c"
+  },
+  "device_install_tested": false,
+  "real_notifications_tested": false,
+  "verification": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: CN=Student Assistant Local Development\nSigner #1 certificate SHA-256 digest: 7799765b6434e8d3fa21eef8d6cbe39f91e7c1258adf9aeb585b1a0bee4e2844\nSigner #1 certificate SHA-1 digest: 208e8e723387e47604e573b9e2017a845e57570b\nSigner #1 certificate MD5 digest: fb5b54833cb6987b664f379d9c476556\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: 064379ec9981a1981569e8fbc0969285f6c20929d18a6580db53c4a691f99be2\nSigner #1 public key SHA-1 digest: e58b9733e1ee07248ed5af9123652464377781f6\nSigner #1 public key MD5 digest: 91c1af2078ebce3db7ea47b6a16fe97c"
+}

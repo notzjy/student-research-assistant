@@ -1,0 +1,79 @@
+{
+  "kind": "real SQLite operations using synthetic teaching tasks; no model call",
+  "demo": {
+    "save_results": [
+      {
+        "status": "created",
+        "task": {
+          "id": "23fac99706a486f3",
+          "title": "[教学示例] 交综述",
+          "time_text": "周五前",
+          "location": null,
+          "status": "pending"
+        }
+      },
+      {
+        "status": "created",
+        "task": {
+          "id": "15f99161e51599fa",
+          "title": "[教学示例] 参加组会",
+          "time_text": "明天下午三点",
+          "location": "实验楼302",
+          "status": "pending"
+        }
+      }
+    ],
+    "completed_task": {
+      "id": "23fac99706a486f3",
+      "title": "[教学示例] 交综述",
+      "time_text": "周五前",
+      "location": null,
+      "status": "completed"
+    },
+    "all_tasks": [
+      {
+        "id": "23fac99706a486f3",
+        "title": "[教学示例] 交综述",
+        "time_text": "周五前",
+        "location": null,
+        "status": "completed"
+      },
+      {
+        "id": "15f99161e51599fa",
+        "title": "[教学示例] 参加组会",
+        "time_text": "明天下午三点",
+        "location": "实验楼302",
+        "status": "pending"
+      }
+    ],
+    "pending_tasks": [
+      {
+        "id": "15f99161e51599fa",
+        "title": "[教学示例] 参加组会",
+        "time_text": "明天下午三点",
+        "location": "实验楼302",
+        "status": "pending"
+      }
+    ],
+    "pending_count": 1
+  },
+  "checks": {
+    "repeat_save_statuses": [
+      "exists",
+      "exists"
+    ],
+    "cli_new_process_persistence_and_filters": "passed",
+    "legacy_import_counts": {
+      "created": 2,
+      "exists": 0
+    },
+    "legacy_source_unchanged": true,
+    "offline_database_tests_passed": 10,
+    "pending_count_matches_list": true,
+    "pending_counts_for_empty_saved_completed": [
+      0,
+      2,
+      1
+    ]
+  }
+}
