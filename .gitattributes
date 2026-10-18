@@ -7,7 +7,8 @@
 # 构建记录保存Android源码的字节哈希，禁止Git转换对应源码的换行。
 android-notification-bridge/**/*.java -text
 android-notification-bridge/AndroidManifest.xml -text
-*.cmd text eol=crlf
+# CMD含中文行时必须保留CRLF字节，避免源码ZIP或编辑后变成LF导致命令被截断。
+*.cmd -text
 *.png binary
 *.apk binary
 *.idsig binary

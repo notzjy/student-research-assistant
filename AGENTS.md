@@ -2,6 +2,7 @@
 
 ## 最新执行方式：先完成项目，教学暂缓（2026-10-17）
 
+- 2026-10-18已定位双击启动无反应：实际工作区的UTF-8中文CMD为LF，Windows cmd解析出现截断；保持原字节的对照探针证明CRLF可正常解析。已修复本地脚本为CRLF，将`.gitattributes`中的`*.cmd`改为`-text`以保留Git/源码ZIP字节；新增真实CMD解析回归（只替换最终启动动作为标记，绝不启动用户服务），13项启动相关测试通过。原350项全量与容器验收保留历史证据，新增测试的完整CI结果单独记录。GUI是否出现仍等待用户重新双击反馈；本轮未重试上一轮被拒绝的自动启动操作。
 - 最新任务已恢复项目收尾。真实QQ指定PDF附件链路9项、最近新信优先真实检查4项通过；新增13项防积压回归，本机与GitHub Actions均350项（根277＋lessons73）通过，pip check通过。GitHub Actions已实际构建和运行Linux Compose双服务并验收重启，M6容器1分计入，当前项目84%、阶段[10,10,20,15,20,0,9]；学习400冻结。手机0设备、真正新信延迟仍待，M5保持0。详情见`docs/results/closeout_status.json`。本次自动重启自有进程被审批策略拒绝（blocked by policy，无具体原因），未执行，不得换方式重试终止；请用户在桌面控制台停止再启动加载修复。用户早先已同意安装安卓、指定邮件样本，仍等待设备操作。
 
 - 用户最新要求优先整理到本人GitHub供简历放链接，并在仓库新增与现有PDF段落结构一致的项目介绍。当前已发布公开仓库`https://github.com/notzjy/student-research-assistant`，公开首页、排除规则、署名、CI和`docs/RESUME_PROJECT.md`均已上传；原PDF未改。初版317文件的远端树哈希与本地完全一致，GitHub Actions实际337项测试及pip check已通过，发布与Actions状态见`docs/PUBLICATION.md`和`docs/results/github_publication.json`；手机与指定邮箱附件实机验收暂缓。不因本次文档整理和公开发布增加学习分。

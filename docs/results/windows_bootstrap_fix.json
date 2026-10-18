@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-18",
+  "issue": "double clicking Windows startup script has no visible result",
+  "root_cause": "UTF-8 Chinese batch file with LF produces truncated commands in Windows cmd",
+  "actual_cmd_probe": {
+    "lf_variant_has_command_errors": true,
+    "crlf_variant_has_command_errors": false,
+    "probe_replaces_launch_with_marker": true,
+    "user_services_started_by_probe": false
+  },
+  "fix": {
+    "working_file": "启动助理.cmd",
+    "line_ending": "CRLF",
+    "git_preserves_raw_bytes": true,
+    "source_archive_crlf_verified": true
+  },
+  "targeted_tests": {
+    "launcher": 12,
+    "windows_cmd_parser": 1,
+    "total": 13,
+    "status": "passed",
+    "parser_test_includes_unicode_and_spaces_in_directory": true
+  },
+  "gui_open_confirmed_by_user": false,
+  "project_percent": 84,
+  "learning_score_changed": false
+}

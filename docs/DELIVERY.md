@@ -16,6 +16,8 @@
 - “停止本次服务”只停止本控制台创建的进程。关闭控制台时可选择停止并退出，或保持运行并最小化。电脑休眠、关机或服务停止期间不会即时弹提醒。
 - 启动日志保存在 `local-data/logs/`。环境检查可单独运行，检查本身不连接模型或邮箱：
 
+启动脚本已于2026-10-18修复Windows换行兼容问题：`启动助理.cmd`须保留CRLF，不能直接保存为LF；仓库也保留原始CRLF字节，避免下载源码ZIP后再次出现中文命令被截断。若双击后仍无窗口，可在项目终端执行`.\.venv\Scripts\python.exe -X utf8 .\start_assistant.py`查看实际错误。此命令会打开同一个启动控制台，不会另起一种助理服务。
+
 ```powershell
 .\.venv\Scripts\python.exe -X utf8 .\start_assistant.py --check
 ```
