@@ -8,6 +8,8 @@
 
 [运行说明](docs/DELIVERY.md) · [简历项目介绍](docs/RESUME_PROJECT.md) · [验收报告](docs/results/final_delivery.json) · [安卓无线接入](docs/CHANNEL_INTEGRATION.md) · [上游声明](THIRD_PARTY_NOTICES.md)
 
+安卓安装：[HTTPS直接下载安装包](https://raw.githubusercontent.com/notzjy/student-research-assistant/main/android-notification-bridge/dist/student-assistant-bridge.apk)。安装包下载不依赖电脑开机；配对和日常上传需要电脑助理服务运行且网络可达。
+
 项目仓库：[https://github.com/notzjy/student-research-assistant](https://github.com/notzjy/student-research-assistant)。可将此链接用于简历；上传与校验详情见[发布记录](docs/PUBLICATION.md)。
 
 ![本机实际运行界面，使用合成验收数据](docs/results/final_dashboard.png)

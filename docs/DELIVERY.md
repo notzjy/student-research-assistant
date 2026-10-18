@@ -86,7 +86,7 @@
 
 1. 电脑和手机连接同一可互通Wi-Fi；在启动控制台勾选允许手机局域网接入后启动。
 2. 电脑网页打开“手机接入”，明确启用并保存配对信息。页面提供手机能访问的电脑地址、APK下载二维码和私有配对二维码。
-3. 手机浏览器扫码下载[已构建APK](../android-notification-bridge/dist/student-assistant-bridge.apk)，由你确认安装；安装后扫描配对码，核对地址并保存配置。
+3. 手机浏览器可直接使用[GitHub HTTPS安装地址](https://raw.githubusercontent.com/notzjy/student-research-assistant/main/android-notification-bridge/dist/student-assistant-bridge.apk)，或扫描本机下载二维码取得[已构建APK](../android-notification-bridge/dist/student-assistant-bridge.apk)，由你确认安装。HTTPS下载不依赖电脑服务；局域网下载和后续配对、上传需要电脑服务保持运行。安装后扫描配对码，核对地址并保存配置。
 4. 由你在安卓系统设置中授予通知使用权，选择微信、QQ、BOSS直聘的采集范围并启用。配对二维码不会自动授予系统权限。扫码工具不能识别配对链接时可手工填写页面给出的地址和令牌。
 5. 可以使用应用的合成测试通知检查连接状态。日常运行无需USB；电脑停止或网络断开时，手机先缓存，恢复可达网络后补传。
 
